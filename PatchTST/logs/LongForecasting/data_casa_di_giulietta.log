@@ -1,0 +1,48 @@
+Args in experiment:
+Namespace(activation='gelu', affine=0, batch_size=128, c_out=7, checkpoints='./checkpoints/', d_ff=128, d_layers=1, d_model=16, data='custom', data_path='data_casa_di_giulietta.csv', dec_in=5, decomposition=0, des='Exp', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.3, e_layers=3, embed='timeF', embed_type=0, enc_in=5, factor=1, fc_dropout=0.3, features='MS', freq='t', gpu=0, head_dropout=0.0, individual=0, is_training=1, itr=1, kernel_size=25, label_len=48, learning_rate=0.0001, loss='mse', lradj='type3', model='PatchTST', model_id='data_casa_di_giulietta', moving_avg=25, n_heads=4, num_workers=10, output_attention=False, padding_patch='end', patch_len=16, patience=100, pct_start=0.3, pred_len=96, random_seed=2025, revin=1, root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/../main_dataset/count_data', seq_len=96, stride=1, subtract_last=0, target='count', test_flop=False, train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : data_casa_di_giulietta_PatchTST_custom_ftMS_sl96_ll48_pl96_dm16_nh4_el3_dl1_df128_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 219228
+val 31251
+test 62596
+	iters: 100, epoch: 1 | loss: 1.4842587
+	speed: 0.2141s/iter; left time: 345.4072s
+	iters: 200, epoch: 1 | loss: 1.5410509
+	speed: 0.2066s/iter; left time: 312.5381s
+	iters: 300, epoch: 1 | loss: 1.2862414
+	speed: 0.2090s/iter; left time: 295.3620s
+	iters: 400, epoch: 1 | loss: 1.2992045
+	speed: 0.2124s/iter; left time: 278.8162s
+	iters: 500, epoch: 1 | loss: 1.1684548
+	speed: 0.2239s/iter; left time: 271.6337s
+	iters: 600, epoch: 1 | loss: 1.1779561
+	speed: 0.2136s/iter; left time: 237.7701s
+	iters: 700, epoch: 1 | loss: 1.2007861
+	speed: 0.2184s/iter; left time: 221.2145s
+	iters: 800, epoch: 1 | loss: 1.0775858
+	speed: 0.2064s/iter; left time: 188.4843s
+	iters: 900, epoch: 1 | loss: 1.2600591
+	speed: 0.2044s/iter; left time: 166.2171s
+	iters: 1000, epoch: 1 | loss: 1.2043550
+	speed: 0.2037s/iter; left time: 145.2537s
+	iters: 1100, epoch: 1 | loss: 1.1024593
+	speed: 0.2021s/iter; left time: 123.8644s
+	iters: 1200, epoch: 1 | loss: 0.9838966
+	speed: 0.2020s/iter; left time: 103.6158s
+	iters: 1300, epoch: 1 | loss: 0.9092461
+	speed: 0.2037s/iter; left time: 84.1423s
+	iters: 1400, epoch: 1 | loss: 0.9962870
+	speed: 0.2046s/iter; left time: 64.0252s
+	iters: 1500, epoch: 1 | loss: 1.0145822
+	speed: 0.2054s/iter; left time: 43.7541s
+	iters: 1600, epoch: 1 | loss: 0.9760264
+	speed: 0.2417s/iter; left time: 27.3105s
+	iters: 1700, epoch: 1 | loss: 1.0971359
+	speed: 0.2935s/iter; left time: 3.8151s
+Epoch: 1 cost time: 370.3577346801758
+Epoch: 1, Steps: 1712 | Train Loss: 1.2355804 Vali Loss: 0.0013101 Test Loss: 0.1377978
+Validation loss decreased (inf --> 0.001310).  Saving model ...
+Updating learning rate to 0.0001
+>>>>>>>testing : data_casa_di_giulietta_PatchTST_custom_ftMS_sl96_ll48_pl96_dm16_nh4_el3_dl1_df128_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 62596
+mse:0.13779781758785248, mae:0.19889436662197113, rse:0.8463537096977234

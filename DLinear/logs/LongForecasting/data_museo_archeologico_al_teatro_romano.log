@@ -1,0 +1,73 @@
+Args in experiment:
+Namespace(activation='gelu', batch_size=64, c_out=1, checkpoints='./checkpoints/', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_museo_archeologico_al_teatro_romano.csv', dec_in=5, des='Exp', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', embed_type=0, enc_in=5, factor=1, features='MS', freq='t', gpu=0, individual=False, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', model='DLinear', model_id='data_museo_archeologico_al_teatro_romano', moving_avg=25, n_heads=8, num_workers=10, output_attention=False, patience=7, pred_len=96, root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/DLinear/../../main_dataset/count_data', seq_len=96, target='count', test_flop=False, train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : data_museo_archeologico_al_teatro_romano_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 146865
+val 20914
+test 41921
+	iters: 100, epoch: 1 | loss: 0.6456891
+	speed: 0.0113s/iter; left time: 24.8713s
+	iters: 200, epoch: 1 | loss: 0.7367041
+	speed: 0.0064s/iter; left time: 13.4082s
+	iters: 300, epoch: 1 | loss: 0.6591462
+	speed: 0.0062s/iter; left time: 12.3779s
+	iters: 400, epoch: 1 | loss: 0.6597096
+	speed: 0.0064s/iter; left time: 12.1674s
+	iters: 500, epoch: 1 | loss: 0.6245841
+	speed: 0.0067s/iter; left time: 12.0256s
+	iters: 600, epoch: 1 | loss: 0.7091779
+	speed: 0.0066s/iter; left time: 11.1909s
+	iters: 700, epoch: 1 | loss: 0.6384825
+	speed: 0.0079s/iter; left time: 12.5888s
+	iters: 800, epoch: 1 | loss: 0.7583389
+	speed: 0.0063s/iter; left time: 9.3676s
+	iters: 900, epoch: 1 | loss: 0.6880684
+	speed: 0.0063s/iter; left time: 8.7486s
+	iters: 1000, epoch: 1 | loss: 0.9039647
+	speed: 0.0060s/iter; left time: 7.7757s
+	iters: 1100, epoch: 1 | loss: 0.6394513
+	speed: 0.0065s/iter; left time: 7.7557s
+	iters: 1200, epoch: 1 | loss: 0.5466565
+	speed: 0.0069s/iter; left time: 7.5039s
+	iters: 1300, epoch: 1 | loss: 0.7178158
+	speed: 0.0070s/iter; left time: 6.9477s
+	iters: 1400, epoch: 1 | loss: 0.8438481
+	speed: 0.0073s/iter; left time: 6.4939s
+	iters: 1500, epoch: 1 | loss: 0.7088755
+	speed: 0.0049s/iter; left time: 3.8890s
+	iters: 1600, epoch: 1 | loss: 0.6970096
+	speed: 0.0054s/iter; left time: 3.7758s
+	iters: 1700, epoch: 1 | loss: 0.5644733
+	speed: 0.0065s/iter; left time: 3.8587s
+	iters: 1800, epoch: 1 | loss: 0.5919387
+	speed: 0.0059s/iter; left time: 2.9016s
+	iters: 1900, epoch: 1 | loss: 0.5644526
+	speed: 0.0055s/iter; left time: 2.1643s
+	iters: 2000, epoch: 1 | loss: 0.8402795
+	speed: 0.0052s/iter; left time: 1.5342s
+	iters: 2100, epoch: 1 | loss: 0.6448203
+	speed: 0.0056s/iter; left time: 1.0835s
+	iters: 2200, epoch: 1 | loss: 0.6038514
+	speed: 0.0053s/iter; left time: 0.5008s
+Epoch: 1 cost time: 14.753284692764282
+Epoch: 1, Steps: 2294 | Train Loss: 0.7068978 Vali Loss: 0.9458247 Test Loss: 0.8049955
+Validation loss decreased (inf --> 0.945825).  Saving model ...
+Updating learning rate to 0.0001
+>>>>>>>testing : data_museo_archeologico_al_teatro_romano_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 41921
+mse:0.8049955368041992, mae:0.4527827799320221, rse:0.8340850472450256, corr:[0.55300796 0.55929786 0.55816    0.5565439  0.5612872  0.559639
+ 0.555827   0.5533895  0.5476907  0.547355   0.54794705 0.54939634
+ 0.54878366 0.54198945 0.54826194 0.54750866 0.543398   0.54423255
+ 0.5476241  0.5496411  0.54934573 0.5530293  0.5538165  0.5530848
+ 0.5528335  0.55188745 0.5528818  0.55401665 0.5548486  0.5551703
+ 0.55353886 0.5569505  0.55441    0.5530012  0.5538243  0.5548858
+ 0.5566429  0.5549387  0.5555089  0.553836   0.5555253  0.55419415
+ 0.55192286 0.5562446  0.55217355 0.5524377  0.5551512  0.5542237
+ 0.55781895 0.55548584 0.5533188  0.5560873  0.553434   0.5521618
+ 0.5538893  0.55550903 0.55616766 0.55302566 0.55322856 0.555697
+ 0.55274665 0.5553917  0.5548944  0.55340195 0.557814   0.5549074
+ 0.5556113  0.55310166 0.55510485 0.55237216 0.552556   0.5546892
+ 0.55692464 0.55769455 0.55769044 0.55794674 0.5549526  0.55604076
+ 0.55471945 0.55291325 0.5522556  0.55250925 0.5463352  0.54580766
+ 0.5456093  0.5455147  0.5481249  0.5472161  0.5496733  0.54922795
+ 0.5529611  0.54973507 0.5518518  0.5574413  0.55862385 0.5617358 ]

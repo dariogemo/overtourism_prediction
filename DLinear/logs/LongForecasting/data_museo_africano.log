@@ -1,0 +1,31 @@
+Args in experiment:
+Namespace(activation='gelu', batch_size=64, c_out=1, checkpoints='./checkpoints/', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_museo_africano.csv', dec_in=5, des='Exp', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', embed_type=0, enc_in=5, factor=1, features='MS', freq='t', gpu=0, individual=False, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', model='DLinear', model_id='data_museo_africano', moving_avg=25, n_heads=8, num_workers=10, output_attention=False, patience=7, pred_len=96, root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/DLinear/../../main_dataset/count_data', seq_len=96, target='count', test_flop=False, train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : data_museo_africano_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 41935
+val 5923
+test 11941
+	iters: 100, epoch: 1 | loss: nan
+	speed: 0.0090s/iter; left time: 4.9920s
+	iters: 200, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 2.1795s
+	iters: 300, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 1.7714s
+	iters: 400, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 1.3293s
+	iters: 500, epoch: 1 | loss: nan
+	speed: 0.0060s/iter; left time: 0.9401s
+	iters: 600, epoch: 1 | loss: nan
+	speed: 0.0060s/iter; left time: 0.3375s
+Epoch: 1 cost time: 4.084254741668701
+Epoch: 1, Steps: 655 | Train Loss: nan Vali Loss: nan Test Loss: nan
+Validation loss decreased (inf --> nan).  Saving model ...
+Updating learning rate to 0.0001
+>>>>>>>testing : data_museo_africano_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 11941
+mse:nan, mae:nan, rse:nan, corr:[nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan]

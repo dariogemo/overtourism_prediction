@@ -1,0 +1,97 @@
+Args in experiment:
+Namespace(activation='gelu', batch_size=64, c_out=1, checkpoints='./checkpoints/', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_museo_degli_affreschi_"g.b._cavalcaselle"_e_tomba_di_giulietta.csv', dec_in=5, des='Exp', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', embed_type=0, enc_in=5, factor=1, features='MS', freq='t', gpu=0, individual=False, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', model='DLinear', model_id='data_museo_degli_affreschi_"g.b._cavalcaselle"_e_tomba_di_giulietta', moving_avg=25, n_heads=8, num_workers=10, output_attention=False, patience=7, pred_len=96, root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/DLinear/../../main_dataset/count_data', seq_len=96, target='count', test_flop=False, train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : data_museo_degli_affreschi_"g.b._cavalcaselle"_e_tomba_di_giulietta_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 219435
+val 31281
+test 62655
+	iters: 100, epoch: 1 | loss: 0.6660422
+	speed: 0.0090s/iter; left time: 29.8552s
+	iters: 200, epoch: 1 | loss: 0.8023971
+	speed: 0.0047s/iter; left time: 15.2917s
+	iters: 300, epoch: 1 | loss: 0.8016180
+	speed: 0.0047s/iter; left time: 14.6885s
+	iters: 400, epoch: 1 | loss: 0.7473328
+	speed: 0.0047s/iter; left time: 14.1429s
+	iters: 500, epoch: 1 | loss: 0.8738197
+	speed: 0.0046s/iter; left time: 13.4335s
+	iters: 600, epoch: 1 | loss: 0.7991168
+	speed: 0.0047s/iter; left time: 13.3472s
+	iters: 700, epoch: 1 | loss: 0.7300615
+	speed: 0.0047s/iter; left time: 12.9077s
+	iters: 800, epoch: 1 | loss: 0.8826715
+	speed: 0.0049s/iter; left time: 12.8007s
+	iters: 900, epoch: 1 | loss: 0.7529807
+	speed: 0.0048s/iter; left time: 12.0157s
+	iters: 1000, epoch: 1 | loss: 0.9771535
+	speed: 0.0049s/iter; left time: 11.9804s
+	iters: 1100, epoch: 1 | loss: 0.7445890
+	speed: 0.0048s/iter; left time: 11.2922s
+	iters: 1200, epoch: 1 | loss: 0.7547787
+	speed: 0.0047s/iter; left time: 10.4214s
+	iters: 1300, epoch: 1 | loss: 0.7613491
+	speed: 0.0048s/iter; left time: 10.2474s
+	iters: 1400, epoch: 1 | loss: 1.0769840
+	speed: 0.0046s/iter; left time: 9.4318s
+	iters: 1500, epoch: 1 | loss: 0.9238902
+	speed: 0.0048s/iter; left time: 9.3414s
+	iters: 1600, epoch: 1 | loss: 0.8677406
+	speed: 0.0047s/iter; left time: 8.5521s
+	iters: 1700, epoch: 1 | loss: 0.6540644
+	speed: 0.0048s/iter; left time: 8.3635s
+	iters: 1800, epoch: 1 | loss: 0.7749516
+	speed: 0.0047s/iter; left time: 7.6225s
+	iters: 1900, epoch: 1 | loss: 0.7176843
+	speed: 0.0047s/iter; left time: 7.2396s
+	iters: 2000, epoch: 1 | loss: 0.8393329
+	speed: 0.0048s/iter; left time: 6.9084s
+	iters: 2100, epoch: 1 | loss: 0.7966657
+	speed: 0.0058s/iter; left time: 7.7378s
+	iters: 2200, epoch: 1 | loss: 0.6606868
+	speed: 0.0049s/iter; left time: 6.0554s
+	iters: 2300, epoch: 1 | loss: 0.7718576
+	speed: 0.0052s/iter; left time: 5.8281s
+	iters: 2400, epoch: 1 | loss: 0.7523088
+	speed: 0.0052s/iter; left time: 5.3061s
+	iters: 2500, epoch: 1 | loss: 0.6738386
+	speed: 0.0050s/iter; left time: 4.6254s
+	iters: 2600, epoch: 1 | loss: 1.1921184
+	speed: 0.0052s/iter; left time: 4.2918s
+	iters: 2700, epoch: 1 | loss: 0.7288631
+	speed: 0.0051s/iter; left time: 3.7447s
+	iters: 2800, epoch: 1 | loss: 0.8106171
+	speed: 0.0050s/iter; left time: 3.1297s
+	iters: 2900, epoch: 1 | loss: 0.6774606
+	speed: 0.0049s/iter; left time: 2.5698s
+	iters: 3000, epoch: 1 | loss: 0.8644492
+	speed: 0.0047s/iter; left time: 2.0357s
+	iters: 3100, epoch: 1 | loss: 0.6451713
+	speed: 0.0056s/iter; left time: 1.8357s
+	iters: 3200, epoch: 1 | loss: 0.7377427
+	speed: 0.0054s/iter; left time: 1.2334s
+	iters: 3300, epoch: 1 | loss: 0.8393880
+	speed: 0.0051s/iter; left time: 0.6555s
+	iters: 3400, epoch: 1 | loss: 0.7223880
+	speed: 0.0048s/iter; left time: 0.1384s
+Epoch: 1 cost time: 17.331246376037598
+Epoch: 1, Steps: 3428 | Train Loss: 0.8153824 Vali Loss: 0.0221801 Test Loss: 0.1780818
+Validation loss decreased (inf --> 0.022180).  Saving model ...
+Updating learning rate to 0.0001
+>>>>>>>testing : data_museo_degli_affreschi_"g.b._cavalcaselle"_e_tomba_di_giulietta_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 62655
+mse:0.17808189988136292, mae:0.24225163459777832, rse:0.9526863694190979, corr:[0.26949444 0.27296337 0.27648574 0.28084835 0.285752   0.29129314
+ 0.29520974 0.2990297  0.30144277 0.3029682  0.30483586 0.30229777
+ 0.30473492 0.30663624 0.3043756  0.30303353 0.3052698  0.30247778
+ 0.30399886 0.3062084  0.30461043 0.3059125  0.30595472 0.30826765
+ 0.30876523 0.31352702 0.31516942 0.31597263 0.31357548 0.31318858
+ 0.31488737 0.3126085  0.31599563 0.31757545 0.317052   0.31669298
+ 0.31404445 0.31657326 0.31508225 0.31485298 0.3148513  0.3183072
+ 0.31634852 0.31756237 0.31585494 0.31820124 0.31842047 0.31684077
+ 0.3182791  0.3185986  0.31655046 0.31842265 0.31779432 0.3177599
+ 0.3199039  0.3168976  0.31770352 0.31941745 0.31806722 0.31686231
+ 0.31906098 0.318152   0.31686336 0.3187595  0.31860325 0.3174477
+ 0.3199471  0.31785977 0.31793812 0.31415674 0.3170902  0.3172394
+ 0.31666395 0.31752566 0.31917727 0.3162392  0.31551245 0.31596822
+ 0.31473956 0.3160426  0.31166703 0.31314498 0.31391838 0.3135226
+ 0.3116791  0.31233093 0.30915627 0.30822438 0.30780062 0.31047994
+ 0.31411105 0.31568313 0.3172743  0.324593   0.3286129  0.33736706]

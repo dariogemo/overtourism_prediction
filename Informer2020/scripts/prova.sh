@@ -1,0 +1,13 @@
+python -u main_informer.py \
+  --model informer \
+  --root_path ./data/ETT-small \
+  --data ETTm1 \
+  --features S \
+  --seq_len 96 \
+  --label_len 48 \
+  --pred_len 24 \
+  --e_layers 2 \
+  --d_layers 1 \
+  --attn prob \
+  --des 'Exp' \
+  --itr 1

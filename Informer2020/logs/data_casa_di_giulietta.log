@@ -1,0 +1,20 @@
+Args in experiment:
+Namespace(activation='gelu', attn='prob', batch_size=32, c_out=1, checkpoints='./checkpoints/', cols=None, d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_casa_di_giulietta.csv', dec_in=5, des='Exp', detail_freq='t', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=5, factor=5, features='MS', freq='t', gpu=0, inverse=False, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mix=True, model='informer', n_heads=8, num_workers=0, output_attention=False, padding=0, patience=3, pred_len=96, root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/../main_dataset/count_data', s_layers=[3, 2, 1], seq_len=96, target='count', train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : informer_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+data_casa_di_giulietta.csv
+train 219228
+val 31251
+test 62596
+	iters: 100, epoch: 1 | loss: 0.5185117
+	speed: 0.2486s/iter; left time: 17004.3962s
+	iters: 200, epoch: 1 | loss: 0.7354546
+	speed: 0.2724s/iter; left time: 18604.0717s
+	iters: 300, epoch: 1 | loss: 0.5514910
+	speed: 0.4328s/iter; left time: 29516.0381s
+	iters: 400, epoch: 1 | loss: 0.4678248
+	speed: 0.4282s/iter; left time: 29161.3002s
+	iters: 500, epoch: 1 | loss: 0.7701807
+	speed: 0.4283s/iter; left time: 29122.0588s
+	iters: 600, epoch: 1 | loss: 0.6511221
+	speed: 0.4287s/iter; left time: 29108.0863s

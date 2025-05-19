@@ -1,0 +1,193 @@
+Args in experiment:
+Namespace(activation='gelu', batch_size=64, c_out=1, checkpoints='./checkpoints/', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_museo_di_castelvecchio.csv', dec_in=5, des='Exp', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', embed_type=0, enc_in=5, factor=1, features='MS', freq='t', gpu=0, individual=False, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', model='DLinear', model_id='data_museo_di_castelvecchio', moving_avg=25, n_heads=8, num_workers=10, output_attention=False, patience=7, pred_len=96, root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/DLinear/../../main_dataset/count_data', seq_len=96, target='count', test_flop=False, train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Use GPU: cuda:0
+>>>>>>>start training : data_museo_di_castelvecchio_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+train 563180
+val 80387
+test 160868
+	iters: 100, epoch: 1 | loss: nan
+	speed: 0.0103s/iter; left time: 90.0412s
+	iters: 200, epoch: 1 | loss: nan
+	speed: 0.0053s/iter; left time: 45.3942s
+	iters: 300, epoch: 1 | loss: nan
+	speed: 0.0057s/iter; left time: 48.5115s
+	iters: 400, epoch: 1 | loss: nan
+	speed: 0.0058s/iter; left time: 48.4679s
+	iters: 500, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 42.3629s
+	iters: 600, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 40.0864s
+	iters: 700, epoch: 1 | loss: nan
+	speed: 0.0047s/iter; left time: 38.3132s
+	iters: 800, epoch: 1 | loss: nan
+	speed: 0.0058s/iter; left time: 46.6370s
+	iters: 900, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 39.9100s
+	iters: 1000, epoch: 1 | loss: nan
+	speed: 0.0058s/iter; left time: 45.1126s
+	iters: 1100, epoch: 1 | loss: nan
+	speed: 0.0054s/iter; left time: 41.6421s
+	iters: 1200, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 36.6407s
+	iters: 1300, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 37.1710s
+	iters: 1400, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 36.1344s
+	iters: 1500, epoch: 1 | loss: nan
+	speed: 0.0053s/iter; left time: 38.8610s
+	iters: 1600, epoch: 1 | loss: nan
+	speed: 0.0058s/iter; left time: 42.0482s
+	iters: 1700, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 34.8537s
+	iters: 1800, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 34.1643s
+	iters: 1900, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 33.8689s
+	iters: 2000, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 34.1044s
+	iters: 2100, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 34.5589s
+	iters: 2200, epoch: 1 | loss: nan
+	speed: 0.0055s/iter; left time: 36.1261s
+	iters: 2300, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 33.1109s
+	iters: 2400, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 31.5058s
+	iters: 2500, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 32.5001s
+	iters: 2600, epoch: 1 | loss: nan
+	speed: 0.0066s/iter; left time: 41.1332s
+	iters: 2700, epoch: 1 | loss: nan
+	speed: 0.0060s/iter; left time: 36.4705s
+	iters: 2800, epoch: 1 | loss: nan
+	speed: 0.0057s/iter; left time: 34.3781s
+	iters: 2900, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 29.6395s
+	iters: 3000, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 28.4844s
+	iters: 3100, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 27.3736s
+	iters: 3200, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 26.9631s
+	iters: 3300, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 27.7874s
+	iters: 3400, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 25.8376s
+	iters: 3500, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 25.5907s
+	iters: 3600, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 26.0460s
+	iters: 3700, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 24.8070s
+	iters: 3800, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 24.2573s
+	iters: 3900, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 23.3173s
+	iters: 4000, epoch: 1 | loss: nan
+	speed: 0.0047s/iter; left time: 22.4762s
+	iters: 4100, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 24.3209s
+	iters: 4200, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 24.0296s
+	iters: 4300, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 22.0544s
+	iters: 4400, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 21.0572s
+	iters: 4500, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 20.4432s
+	iters: 4600, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 21.4632s
+	iters: 4700, epoch: 1 | loss: nan
+	speed: 0.0064s/iter; left time: 26.2260s
+	iters: 4800, epoch: 1 | loss: nan
+	speed: 0.0059s/iter; left time: 23.6005s
+	iters: 4900, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 19.9921s
+	iters: 5000, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 18.4949s
+	iters: 5100, epoch: 1 | loss: nan
+	speed: 0.0062s/iter; left time: 22.8312s
+	iters: 5200, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 18.2711s
+	iters: 5300, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 18.3602s
+	iters: 5400, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 16.4681s
+	iters: 5500, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 15.7324s
+	iters: 5600, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 15.4465s
+	iters: 5700, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 15.0816s
+	iters: 5800, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 14.6533s
+	iters: 5900, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 14.3237s
+	iters: 6000, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 13.8959s
+	iters: 6100, epoch: 1 | loss: nan
+	speed: 0.0047s/iter; left time: 12.7921s
+	iters: 6200, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 12.6318s
+	iters: 6300, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 13.0450s
+	iters: 6400, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 11.9076s
+	iters: 6500, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 11.1432s
+	iters: 6600, epoch: 1 | loss: nan
+	speed: 0.0052s/iter; left time: 11.5060s
+	iters: 6700, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 10.5978s
+	iters: 6800, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 9.5680s
+	iters: 6900, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 9.3517s
+	iters: 7000, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 8.8483s
+	iters: 7100, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 8.2452s
+	iters: 7200, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 7.9840s
+	iters: 7300, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 7.2451s
+	iters: 7400, epoch: 1 | loss: nan
+	speed: 0.0047s/iter; left time: 6.5722s
+	iters: 7500, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 6.4267s
+	iters: 7600, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 5.7641s
+	iters: 7700, epoch: 1 | loss: nan
+	speed: 0.0051s/iter; left time: 5.6437s
+	iters: 7800, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 4.9681s
+	iters: 7900, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 4.3770s
+	iters: 8000, epoch: 1 | loss: nan
+	speed: 0.0050s/iter; left time: 4.0012s
+	iters: 8100, epoch: 1 | loss: nan
+	speed: 0.0049s/iter; left time: 3.4226s
+	iters: 8200, epoch: 1 | loss: nan
+	speed: 0.0048s/iter; left time: 2.8508s
+	iters: 8300, epoch: 1 | loss: nan
+	speed: 0.0053s/iter; left time: 2.6434s
+	iters: 8400, epoch: 1 | loss: nan
+	speed: 0.0062s/iter; left time: 2.4677s
+	iters: 8500, epoch: 1 | loss: nan
+	speed: 0.0054s/iter; left time: 1.6210s
+	iters: 8600, epoch: 1 | loss: nan
+	speed: 0.0064s/iter; left time: 1.2701s
+	iters: 8700, epoch: 1 | loss: nan
+	speed: 0.0064s/iter; left time: 0.6418s
+Epoch: 1 cost time: 45.96296453475952
+Epoch: 1, Steps: 8799 | Train Loss: nan Vali Loss: nan Test Loss: nan
+Validation loss decreased (inf --> nan).  Saving model ...
+Updating learning rate to 0.0001
+>>>>>>>testing : data_museo_di_castelvecchio_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+test 160868
+mse:nan, mae:nan, rse:nan, corr:[nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan nan
+ nan nan nan nan nan nan]
