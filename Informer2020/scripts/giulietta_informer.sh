@@ -53,7 +53,6 @@ if [ -f "$data_file" ]; then
 	  --attn prob \
 	  --des 'Exp' \
 	  --itr 1 \
-	> "$PROJECT_DIR/Informer2020/logs/${model_id}.log"
 fi
 
 if [ ! -f "$data_file" ]; then
