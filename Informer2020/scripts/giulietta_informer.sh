@@ -50,5 +50,5 @@ if [ -f "$data_file" ]; then
     --d_layers 1 \
     --attn prob \
     --des 'Exp' \
-    --itr 1 
+    --itr 1 > $PROJECT_DIR/Informer2020/logs/data_casa_di_giulietta.log 
 fi

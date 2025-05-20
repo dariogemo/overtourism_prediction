@@ -1,8 +1,0 @@
-Args in experiment:
-Namespace(model='informer', data='custom', root_path='/home/dario/Università/Data_science/Secondo_anno-secondo_semestre/Stage/Code/../main_dataset/count_data', data_path='data_casa_di_giulietta.csv', features='MS', target='count', freq='t', checkpoints='./checkpoints/', seq_len=96, label_len=48, pred_len=96, enc_in=5, dec_in=5, c_out=1, d_model=512, n_heads=8, e_layers=2, d_layers=1, s_layers=[3, 2, 1], d_ff=2048, factor=5, padding=0, distil=True, dropout=0.05, attn='prob', embed='timeF', activation='gelu', output_attention=False, do_predict=False, mix=True, cols=None, num_workers=0, itr=1, train_epochs=10, batch_size=32, patience=3, learning_rate=0.0001, des='Exp', loss='mse', lradj='type1', use_amp=False, inverse=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', detail_freq='t')
-Use GPU: cuda:0
->>>>>>>start training : informer_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
-data_casa_di_giulietta.csv
-train 219228
-val 31251
-test 62596
