@@ -46,7 +46,7 @@ if [ -f "$data_file" ]; then
     --dec_in 5 \
     --c_out 1 \
     --train_epochs 10 \
-    --patience 3 \
+    --patience 5 \
     --batch_size 128 \
     --e_layers 2 \
     --d_layers 1 \
