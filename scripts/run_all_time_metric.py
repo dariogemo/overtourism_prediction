@@ -1,3 +1,4 @@
+from pathlib import Path
 import subprocess
 import time
 import threading
@@ -34,7 +35,27 @@ def sample_usage():
         time.sleep(SAMPLE_INTERVAL)
 
 
-def main(script_path: str, model=None):
+def timed_input(prompt, timeout=5, default='yes'):
+    user_input = [default]
+
+    def ask():
+        try:
+            user_input[0] = input(prompt)
+        except EOFError:
+            pass  # in case input() fails in some environments
+
+    thread = threading.Thread(target=ask)
+    thread.daemon = True
+    thread.start()
+    thread.join(timeout)
+
+    if thread.is_alive():
+        print(f"\nNo input received in {
+              timeout} seconds. Defaulting to '{default}'.")
+    return user_input[0]
+
+
+def main(script_path: str, model: str):
     global keep_sampling
 
     pynvml.nvmlInit()
@@ -42,20 +63,21 @@ def main(script_path: str, model=None):
     sampling_thread = threading.Thread(target=sample_usage)
     sampling_thread.start()
 
-    kaggle = input('Are you in kaggle?')
-    if kaggle == 'y':
-        script_path = os.path.join(
-            "/kaggle/working", "overtourism_prediction", model, "scripts", "giulietta_informer.sh"
-        )
+    kaggle = timed_input(
+        'Are you in kaggle? Answer yes if yes', timeout=5, default='yes')
+
+    if kaggle == 'yes':
+        script_path = Path("/kaggle/working") / "overtourism_prediction" / \
+            model / "scripts" / "giulietta_informer.sh"
         start_time = time.time()
         subprocess.call(['bash', script_path])
         end_time = time.time()
 
-    elif kaggle != 'y':
+    elif kaggle != 'yes':
         start_time = time.time()
         subprocess.call(['bash', script_path])
         end_time = time.time()
-
+    print(script_path)
     keep_sampling = False
     sampling_thread.join()
 
