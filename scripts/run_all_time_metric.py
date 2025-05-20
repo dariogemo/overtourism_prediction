@@ -131,11 +131,9 @@ def get_abs_path(script_path):
 
 
 if __name__ == "__main__":
+    # main(get_abs_path(
+    #     'DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_dlinear.sh'), 'DLinear')
     main(get_abs_path(
-        'DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_dlinear.sh'), 'DLinear')
-    main(get_abs_path(
-        'DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_dlinear.sh'), 'DLinear')
-    # main('PatchTST', get_abs_path(
-    #     'PatchTST/scripts/PatchTST/arena_patchtst.sh'))
+        'PatchTST/scripts/PatchTST/giulietta_patchtst.sh'), 'PatchTST')
     # main(get_abs_path(
     #     'Informer2020/scripts/giulietta_informer.sh'), 'Informer2020')
