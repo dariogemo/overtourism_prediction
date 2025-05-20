@@ -116,7 +116,11 @@ def main(script_path: str, model: str):
     plt.grid(True)
     plt.tight_layout()
     # plt.show()
-    plt.savefig(f'img/{model}_giulietta.png')
+    if kaggle == 'yes':
+        plt.savefig(
+            f'/kaggle/working/overtourism_prediction/scripts/img/{model}_giulietta.png')
+    if kaggle != 'yes':
+        plt.savefig(f'img/{model}_giulietta.png')
     pynvml.nvmlShutdown()
 
 
