@@ -42,9 +42,18 @@ def main(script_path: str, model=None):
     sampling_thread = threading.Thread(target=sample_usage)
     sampling_thread.start()
 
-    start_time = time.time()
-    subprocess.call(['bash', script_path])
-    end_time = time.time()
+    kaggle = input('Are you in kaggle?')
+    if kaggle == 'yes':
+        script_path = f'/kaggle/working/overtourism_prediction/{
+            model}/scripts/giulietta_informer.sh'
+        start_time = time.time()
+        subprocess.call(['bash', script_path])
+        end_time = time.time()
+
+    elif kaggle != 'yes':
+        start_time = time.time()
+        subprocess.call(['bash', script_path])
+        end_time = time.time()
 
     keep_sampling = False
     sampling_thread.join()
