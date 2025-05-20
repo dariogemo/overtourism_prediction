@@ -21,40 +21,34 @@ if [ ! -d "$DATA_DIR" ]; then
   exit 1
 fi
 
-# files=($DATA_DIR/*)
-# total_files=${#files[@]}
 data_file=$DATA_DIR/data_casa_di_giulietta.csv
 
 if [ -f "$data_file" ]; then
-	filename=$(basename "$data_file")
-	model_id="${filename%.*}"
+  filename=$(basename "$data_file")
+  model_id="${filename%.*}"
 
-	echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename"
 
-	python -u $PROJECT_DIR/Informer2020/main_informer.py \
-	  --model informer \
-	  --root_path $DATA_DIR \
-	  --data_path $filename \
-	  --data custom \
-	  --features MS \
-	  --target count \
-	  --freq t \
-	  --seq_len 96 \
-	  --label_len 48 \
-	  --pred_len 96 \
-	  --enc_in 5 \
-	  --dec_in 5 \
-	  --c_out 1 \
-	  --train_epochs 10 \
-	  --patience 3 \
-	  --batch_size 32 \
-	  --e_layers 2 \
-	  --d_layers 1 \
-	  --attn prob \
-	  --des 'Exp' \
-	  --itr 1 \
-fi
-
-if [ ! -f "$data_file" ]; then
-	  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ⚠️ Skipping: $data_file does not exist or is not a regular file." >&2
+  python -u $PROJECT_DIR/Informer2020/main_informer.py \
+    --model informer \
+    --root_path $DATA_DIR \
+    --data_path $filename \
+    --data custom \
+    --features MS \
+    --target count \
+    --freq t \
+    --seq_len 96 \
+    --label_len 48 \
+    --pred_len 96 \
+    --enc_in 5 \
+    --dec_in 5 \
+    --c_out 1 \
+    --train_epochs 10 \
+    --patience 3 \
+    --batch_size 32 \
+    --e_layers 2 \
+    --d_layers 1 \
+    --attn prob \
+    --des 'Exp' \
+    --itr 1
 fi
