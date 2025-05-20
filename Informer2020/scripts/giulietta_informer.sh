@@ -27,7 +27,7 @@ if [ -f "$data_file" ]; then
   filename=$(basename "$data_file")
   model_id="${filename%.*}"
 
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename Informer2020"
 
   python -u $PROJECT_DIR/Informer2020/main_informer.py \
     --model informer \

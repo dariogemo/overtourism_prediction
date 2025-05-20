@@ -27,7 +27,7 @@ if [ -f "$data_file" ]; then
   filename=$(basename "$data_file")
   model_id="${filename%.*}"
 
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename DLinear"
 
   python -u $PROJECT_DIR/DLinear/run_longExp.py \
     --model_id "$model_id" \
