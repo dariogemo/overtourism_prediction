@@ -43,7 +43,7 @@ def main(script_path: str, model=None):
     sampling_thread.start()
 
     kaggle = input('Are you in kaggle?')
-    if kaggle == 'yes':
+    if kaggle == 'y':
         script_path = os.path.join(
             "/kaggle/working", "overtourism_prediction", model, "scripts", "giulietta_informer.sh"
         )
@@ -51,7 +51,7 @@ def main(script_path: str, model=None):
         subprocess.call(['bash', script_path])
         end_time = time.time()
 
-    elif kaggle != 'yes':
+    elif kaggle != 'y':
         start_time = time.time()
         subprocess.call(['bash', script_path])
         end_time = time.time()
