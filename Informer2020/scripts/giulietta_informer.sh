@@ -50,6 +50,5 @@ if [ -f "$data_file" ]; then
     --d_layers 1 \
     --attn prob \
     --des 'Exp' \
-    --itr 1 \
-    --use_multi_gpu
+    --itr 1 
 fi
