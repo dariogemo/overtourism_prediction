@@ -31,7 +31,7 @@ if [ -f "$data_file" ]; then
 
 	echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename"
 
-	python -u ../Informer2020/main_informer.py \
+	python -u $PROJECT_DIR/Informer2020/main_informer.py \
 	  --model informer \
 	  --root_path $DATA_DIR \
 	  --data_path $filename \
