@@ -68,14 +68,14 @@ def main(script_path: str, model: str):
     if kaggle == 'yes':
         if model == 'DLinear':
             script_path = Path("/kaggle/working") / "overtourism_prediction" / \
-                model / "scripts" / "giulietta_dlinear.sh"
+                model / "scripts" / "EXP-LongForecasting" / "DLinear" / "giulietta_dlinear.sh"
             start_time = time.time()
             subprocess.call(['bash', script_path])
             end_time = time.time()
 
         if model == 'PatchTST':
             script_path = Path("/kaggle/working") / "overtourism_prediction" / \
-                model / "scripts" / "giulietta_patchtst.sh"
+                model / "scripts" / "PatchTST" / "giulietta_patchtst.sh"
             start_time = time.time()
             subprocess.call(['bash', script_path])
             end_time = time.time()
