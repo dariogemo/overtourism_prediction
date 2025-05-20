@@ -2,10 +2,10 @@
 
 # Get absolute path to the directory containing this script
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-echo SCRIPT_DIR $SCRIPT_DIR
+
 # Go one level up to reach DLinear/
 PROJECT_DIR="$( cd "$SCRIPT_DIR/../../.." && pwd )"
-echo PROJECT_DIR $PROJECT_DIR
+
 # Set PYTHONPATH to project root
 export PYTHONPATH="$PROJECT_DIR"
 
@@ -14,7 +14,6 @@ mkdir -p "$PROJECT_DIR/PatchTST/logs"
 
 # Set the path to the data files
 DATA_DIR="$PROJECT_DIR/../main_dataset/count_data"
-echo DATA_DIR $DATA_DIR
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -52,5 +51,5 @@ if [ -f "$data_file" ]; then
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \
-    --itr 1 > "$PROJECT_DIR/PatchTST/logs/${model_id}.log"
+    --itr 1 # > "$PROJECT_DIR/PatchTST/logs/${model_id}.log"
 fi
