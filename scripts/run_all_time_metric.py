@@ -50,8 +50,7 @@ def timed_input(prompt, timeout=5, default='yes'):
     thread.join(timeout)
 
     if thread.is_alive():
-        print(f"\nNo input received in {
-              timeout} seconds. Defaulting to '{default}'.")
+        print(f"\nNo input received in seconds. Defaulting to '{default}'.")
     return user_input[0]
 
 
