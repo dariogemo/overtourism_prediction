@@ -40,7 +40,7 @@ for data_file in "$DATA_DIR"/*; do
       --freq t \
       --des 'Exp' \
       --itr 1 \
-      --batch_size 128 \
+      --batch_size 64 \
       --train_epochs 10 \
       --patience 7 \
       > "$PROJECT_DIR/logs/LongForecasting/${model_id}.log"

@@ -116,7 +116,7 @@ def main(script_path: str, model: str):
     plt.grid(True)
     plt.tight_layout()
     # plt.show()
-    plt.savefig(f'./img/{model}_giulietta.png')
+    plt.savefig(f'img/{model}_giulietta.png')
     pynvml.nvmlShutdown()
 
 

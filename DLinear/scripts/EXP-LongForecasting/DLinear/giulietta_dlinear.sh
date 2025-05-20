@@ -51,5 +51,5 @@ if [ -f "$data_file" ]; then
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \
-    --itr 1 
+    --itr 1 > "$PROJECT_DIR/DLinear/logs/LongForecasting/${model_id}.log"
 fi
