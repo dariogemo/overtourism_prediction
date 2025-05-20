@@ -44,8 +44,9 @@ def main(script_path: str, model=None):
 
     kaggle = input('Are you in kaggle?')
     if kaggle == 'yes':
-        script_path = f'/kaggle/working/overtourism_prediction/{
-            model}/scripts/giulietta_informer.sh'
+        script_path = os.path.join(
+            "/kaggle/working", "overtourism_prediction", model, "scripts", "giulietta_informer.sh"
+        )
         start_time = time.time()
         subprocess.call(['bash', script_path])
         end_time = time.time()
