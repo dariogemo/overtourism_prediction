@@ -66,17 +66,32 @@ def main(script_path: str, model: str):
         'Are you in kaggle? Answer yes if yes', timeout=5, default='yes')
 
     if kaggle == 'yes':
-        script_path = Path("/kaggle/working") / "overtourism_prediction" / \
-            model / "scripts" / "giulietta_informer.sh"
-        start_time = time.time()
-        subprocess.call(['bash', script_path])
-        end_time = time.time()
+        if model == 'DLinear':
+            script_path = Path("/kaggle/working") / "overtourism_prediction" / \
+                model / "scripts" / "giulietta_dlinear.sh"
+            start_time = time.time()
+            subprocess.call(['bash', script_path])
+            end_time = time.time()
+
+        if model == 'PatchTST':
+            script_path = Path("/kaggle/working") / "overtourism_prediction" / \
+                model / "scripts" / "giulietta_patchtst.sh"
+            start_time = time.time()
+            subprocess.call(['bash', script_path])
+            end_time = time.time()
+
+        if model == 'Informer2020':
+            script_path = Path("/kaggle/working") / "overtourism_prediction" / \
+                model / "scripts" / "giulietta_informer.sh"
+            start_time = time.time()
+            subprocess.call(['bash', script_path])
+            end_time = time.time()
 
     elif kaggle != 'yes':
         start_time = time.time()
         subprocess.call(['bash', script_path])
         end_time = time.time()
-    print(script_path)
+
     keep_sampling = False
     sampling_thread.join()
 
@@ -112,9 +127,9 @@ def get_abs_path(script_path):
 
 
 if __name__ == "__main__":
-    # main(get_abs_path(
-    #     'DLinear/scripts/EXP-LongForecasting/DLinear/arena_dlinear.sh'), 'DLinear')
+    main(get_abs_path(
+        'DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_dlinear.sh'), 'DLinear')
     # main('PatchTST', get_abs_path(
     #     'PatchTST/scripts/PatchTST/arena_patchtst.sh'))
-    main(get_abs_path(
-        'Informer2020/scripts/giulietta_informer.sh'), 'Informer2020')
+    # main(get_abs_path(
+    #     'Informer2020/scripts/giulietta_informer.sh'), 'Informer2020')
