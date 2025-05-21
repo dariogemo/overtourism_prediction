@@ -1,3 +1,5 @@
+# Create a csv file where the temperature data from 2014 to 2020 gets encoded from 0 to 4
+
 import numpy as np
 import pandas as pd
 

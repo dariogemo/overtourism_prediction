@@ -1,6 +1,6 @@
-main_dataset/*
 Pyraformer/
 Informer2020/results/
 PatchTST/results/
 DLinear/results/
 FEDformer/
+scripts/checkpoints/*
