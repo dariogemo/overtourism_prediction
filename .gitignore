@@ -4,3 +4,4 @@ PatchTST/results/
 DLinear/results/
 FEDformer/
 scripts/checkpoints/*
+scripts/.ipynb_checkpoints/*

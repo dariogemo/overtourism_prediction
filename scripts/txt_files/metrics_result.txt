@@ -1,0 +1,9 @@
+
+HARDWARE SPECS AND MODEL METRICS
+ ----------------------------------
+The models where trained with 4 Intel(R) Xeon(R) @ 2.00GHz processors and a single NVIDIA Tesla P100 as GPU
+
+          Time AVG CPU% AVG GPU%
+Informer  4422   28.97%   97.22%
+PatchTST   726   44.90%   91.46%
+DLinear     97   74.77%    3.71%
