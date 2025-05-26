@@ -3,5 +3,6 @@ Informer2020/results/
 PatchTST/results/
 DLinear/results/
 FEDformer/
-scripts/checkpoints/*
-scripts/.ipynb_checkpoints/*
+scripts/checkpoints/
+scripts/.ipynb_checkpoints/
+scripts/test_results/

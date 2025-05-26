@@ -32,11 +32,11 @@ if [ -f "$data_file" ]; then
   python -u $PROJECT_DIR/DLinear/run_longExp.py \
     --model_id "data_casa_di_giulietta_train" \
     --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
-    --is_training 0 \
     --model DLinear \
     --root_path $DATA_DIR \
     --data_path $filename \
     --data custom \
+    --testing True \
     --features MS \
     --target count \
     --freq t \
@@ -46,8 +46,6 @@ if [ -f "$data_file" ]; then
     --enc_in 5 \
     --dec_in 5 \
     --c_out 1 \
-    --train_epochs 10 \
-    --patience 3 \
     --batch_size 128 \
     --e_layers 2 \
     --d_layers 1 \

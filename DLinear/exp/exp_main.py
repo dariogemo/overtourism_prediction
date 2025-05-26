@@ -36,8 +36,10 @@ class Exp_Main(Exp_Basic):
         return model
 
     def _get_data(self, flag):
-        if flag == "test":
-            data_set, data_loader, dates = data_provider(self.args, flag)
+        if flag == "test" or flag == "pred":
+            data_set, data_loader, dates = data_provider(
+                self.args, flag, testing=self.args.testing
+            )
             return data_set, data_loader, dates
         else:
             data_set, data_loader = data_provider(self.args, flag)
@@ -255,7 +257,6 @@ class Exp_Main(Exp_Basic):
                 torch.load(
                     os.path.join(self.args.checkpoints, setting, "checkpoint.pth")
                 )
-                # torch.load(os.path.join("./checkpoints/" + setting, "checkpoint.pth"))
             )
 
         preds = []
@@ -368,7 +369,7 @@ class Exp_Main(Exp_Basic):
         return
 
     def predict(self, setting, load=False):
-        pred_data, pred_loader = self._get_data(flag="pred")
+        pred_data, pred_loader, dates = self._get_data(flag="pred")
 
         if load:
             path = os.path.join(self.args.checkpoints, setting)
@@ -376,6 +377,106 @@ class Exp_Main(Exp_Basic):
             self.model.load_state_dict(torch.load(best_model_path))
 
         preds = []
+        trues = []
+        inputx = []
+        # very_dates = []
+        folder_path = "./test_results/" + setting + "/"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+
+        self.model.eval()
+        with torch.no_grad():
+            for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(
+                pred_loader
+            ):
+                batch_x = batch_x.float().to(self.device)
+                batch_y = batch_y.float().to(self.device)
+
+                batch_x_mark = batch_x_mark.float().to(self.device)
+                batch_y_mark = batch_y_mark.float().to(self.device)
+
+                # decoder input
+                dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len :, :]).float()
+                dec_inp = (
+                    torch.cat([batch_y[:, : self.args.label_len, :], dec_inp], dim=1)
+                    .float()
+                    .to(self.device)
+                )
+                # encoder - decoder
+                if self.args.use_amp:
+                    with torch.cuda.amp.autocast():
+                        if "DLinear" in self.args.model:
+                            outputs = self.model(batch_x)
+                        else:
+                            if self.args.output_attention:
+                                outputs = self.model(
+                                    batch_x, batch_x_mark, dec_inp, batch_y_mark
+                                )[0]
+                            else:
+                                outputs = self.model(
+                                    batch_x, batch_x_mark, dec_inp, batch_y_mark
+                                )
+                else:
+                    if "DLinear" in self.args.model:
+                        outputs = self.model(batch_x)
+                    else:
+                        if self.args.output_attention:
+                            outputs = self.model(
+                                batch_x, batch_x_mark, dec_inp, batch_y_mark
+                            )[0]
+
+                        else:
+                            outputs = self.model(
+                                batch_x, batch_x_mark, dec_inp, batch_y_mark
+                            )
+
+                f_dim = -1 if self.args.features == "MS" else 0
+                # print(outputs.shape,batch_y.shape)
+                outputs = outputs[:, -self.args.pred_len :, f_dim:]
+                batch_y = batch_y[:, -self.args.pred_len :, f_dim:].to(self.device)
+                outputs = outputs.detach().cpu().numpy()
+                batch_y = batch_y.detach().cpu().numpy()
+                # date = batch_y_mark.detach().cpu().numpy()
+
+                pred = outputs  # outputs.detach().cpu().numpy()  # .squeeze()
+                true = batch_y  # batch_y.detach().cpu().numpy()  # .squeeze()
+
+                preds.append(pred)
+                trues.append(true)
+                # very_dates.append(date)
+                inputx.append(batch_x.detach().cpu().numpy())
+                if i % 20 == 0:
+                    input = batch_x.detach().cpu().numpy()
+                    gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
+                    pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
+                    visual(gt, pd, os.path.join(folder_path, str(i) + ".pdf"))
+
+        if self.args.test_flop:
+            test_params_flop((batch_x.shape[1], batch_x.shape[2]))
+            exit()
+        preds = np.array(preds)
+        trues = np.array(trues)
+        inputx = np.array(inputx)
+        # very_dates = np.array(very_dates)
+
+        # DEBUG
+        print(preds.shape, "preds shape")
+        print(preds[0], "preds[0]")
+        preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
+        trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
+        inputx = inputx.reshape(-1, inputx.shape[-2], inputx.shape[-1])
+        # very_dates = very_dates.reshape(-1, very_dates.shape[-2], very_dates.shape[-1])
+
+        mae, mse, rmse, mape, mspe, rse, corr = metric(preds, trues)
+        print("mse:{}, mae:{}, rse:{}, corr:{}".format(mse, mae, rse, corr))
+        f = open("result.txt", "a")
+        f.write(setting + "  \n")
+        f.write("mse:{}, mae:{}, rse:{}, corr:{}".format(mse, mae, rse, corr))
+        f.write("\n")
+        f.write("\n")
+        f.close()
+
+        """preds = []
 
         self.model.eval()
         with torch.no_grad():
@@ -431,12 +532,12 @@ class Exp_Main(Exp_Basic):
 
         preds = np.array(preds)
         preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
-
+"""
         # result save
         folder_path = "./results/" + setting + "/"
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
 
         np.save(folder_path + "real_prediction.npy", preds)
-
+        np.save(folder_path + "very_dates.npy", dates)
         return

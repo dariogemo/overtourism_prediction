@@ -16,10 +16,6 @@ df_2019: pd.Series = pd.read_csv(
     index_col="date",
 )["count"]
 
-# TEMPORARY, UNTIL I FIX PREDICTION WITH ALL 2019 VALUES
-# mask = df_2019.index >= datetime(2019, 10, 19)
-# df_2019 = df_2019[mask]
-
 # get the params for inverse scaling
 num_train = int(len(df) * 0.7)
 num_test = int(len(df) * 0.2)
@@ -32,7 +28,6 @@ std = np.std(df)
 true = np.load("true.npy")
 pred = np.load("pred.npy")
 very_dates = np.load("very_dates.npy", allow_pickle=True)
-
 very_true = true[95::96]
 very_pred = pred[95::96]
 very_true = np.concatenate(very_true, axis=0)
@@ -56,15 +51,17 @@ mae: float = mean_absolute_error(
 print("MAE for dlinear", round(mae, 2))
 
 plt.figure()
+plt.title("DLinear predictions for Giulietta first 5 days", fontsize=40)
 plt.plot(final_df.iloc[:500]["count"], label="True")
 plt.plot(final_df.iloc[:500]["Predicted"], label="Predicted")
 plt.legend()
-# plt.savefig("../../img/arena_pl_96_first500.png")
+# plt.savefig("../../img/predictions/giulietta_dlinear_first500.png")
 
 plt.figure()
+plt.title("DLinear predictions for Giulietta 2019", fontsize=40)
 plt.plot(final_df["count"], label="True")
 plt.plot(final_df["Predicted"], label="Predicted")
 plt.legend()
-# plt.savefig("../../img/arena_pl_96_full.png")
+# plt.savefig("../../img/predictions/giulietta_dlinear_full.png", dpi=1000)
 
 plt.show()
