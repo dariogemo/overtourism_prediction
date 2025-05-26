@@ -1,22 +1,24 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_error
 from datetime import datetime
 
 # load the dataframes
 df: pd.Series = pd.read_csv(
     "../../../../main_dataset/count_data_train/data_casa_di_giulietta_train.csv",
     index_col=1,
-    parse_dates=["date"],
+    parse_dates=True,
 )["count"]
 df_2019: pd.Series = pd.read_csv(
     "../../../../main_dataset/count_data_test/data_casa_di_giulietta_test.csv",
-    parse_dates=["date"],
+    parse_dates=True,
     index_col="date",
 )["count"]
-mask = df_2019.index >= datetime(2019, 10, 19)
-df_2019 = df_2019[mask]
+
+# TEMPORARY, UNTIL I FIX PREDICTION WITH ALL 2019 VALUES
+# mask = df_2019.index >= datetime(2019, 10, 19)
+# df_2019 = df_2019[mask]
 
 # get the params for inverse scaling
 num_train = int(len(df) * 0.7)
@@ -47,34 +49,22 @@ final_df = pd.DataFrame(
 )
 final_df = pd.merge(final_df, df_2019, left_index=True, right_index=True)
 
-print(final_df.head())
-
-print(
-    "MAPE for dlinear",
-    round(
-        float(
-            mean_absolute_percentage_error(
-                np.array(final_df["count"]), np.array(final_df["Predicted"])
-            )
-        )
-        / 100,
-        2,
-    )
-    * 100,
-    "%",
+# MAE and plots
+mae: float = mean_absolute_error(
+    np.array(final_df["count"]), np.array(final_df["Predicted"])
 )
+print("MAE for dlinear", round(mae, 2))
 
 plt.figure()
 plt.plot(final_df.iloc[:500]["count"], label="True")
 plt.plot(final_df.iloc[:500]["Predicted"], label="Predicted")
 plt.legend()
-plt.savefig("../../img/arena_pl_96_first500.png")
+# plt.savefig("../../img/arena_pl_96_first500.png")
 
 plt.figure()
 plt.plot(final_df["count"], label="True")
 plt.plot(final_df["Predicted"], label="Predicted")
 plt.legend()
-plt.savefig("../../img/arena_pl_96_full.png")
+# plt.savefig("../../img/arena_pl_96_full.png")
 
 plt.show()
-
