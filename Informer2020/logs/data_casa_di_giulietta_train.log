@@ -1,27 +1,9 @@
 Args in experiment:
-Namespace(activation='gelu', attn='prob', batch_size=128, c_out=1, checkpoints='./checkpoints/', cols=None, d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_casa_di_giulietta_train.csv', dec_in=5, des='Exp', detail_freq='t', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=5, factor=5, features='MS', freq='t', gpu=0, inverse=False, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mix=True, model='informer', n_heads=8, num_workers=0, output_attention=False, padding=0, patience=3, pred_len=96, root_path='/home/dario/dev/Stage/Code/../main_dataset/count_data_train', s_layers=[3, 2, 1], seq_len=96, target='count', train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+Namespace(activation='gelu', attn='prob', batch_size=128, c_out=1, checkpoints='./checkpoints/', cols=None, d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_casa_di_giulietta_train.csv', dec_in=5, des='Exp', detail_freq='t', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', enc_in=5, factor=5, features='MS', freq='t', gpu=0, inverse=False, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', mix=True, model='informer', model_id='data_casa_di_giulietta_train', n_heads=8, num_workers=0, output_attention=False, padding=0, patience=3, pred_len=96, root_path='/home/dario/dev/Stage/Code/../main_dataset/count_data_train', s_layers=[3, 2, 1], seq_len=96, target='count', testing='False', train_epochs=1, use_amp=False, use_gpu=True, use_multi_gpu=False)
+this is accessed
 Use GPU: cuda:0
->>>>>>>start training : informer_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_atprob_fc5_ebtimeF_dtTrue_mxTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>start training : data_casa_di_giulietta_train_informer_ftcustom_slMS_ll96_pl48_dm96_nh512_el8_dl2_df1_at2048_fcprob_eb5_dttimeF_mxTrue_True_Exp>>>>>>>>>>>>>>>>>>>>>>>>>>
 data_casa_di_giulietta_train.csv
-train 122478
-val 17430
-test 34953
-	iters: 100, epoch: 1 | loss: 0.5254512
-	speed: 1.1404s/iter; left time: 977.3199s
-	iters: 200, epoch: 1 | loss: 0.8090385
-	speed: 1.7810s/iter; left time: 1348.2508s
-	iters: 300, epoch: 1 | loss: 0.5538836
-	speed: 1.8096s/iter; left time: 1188.9191s
-	iters: 400, epoch: 1 | loss: 0.5179886
-	speed: 1.7867s/iter; left time: 995.1960s
-	iters: 500, epoch: 1 | loss: 0.4835969
-	speed: 1.7753s/iter; left time: 811.3276s
-	iters: 600, epoch: 1 | loss: 0.4918873
-	speed: 1.7787s/iter; left time: 635.0091s
-	iters: 700, epoch: 1 | loss: 0.4985359
-	speed: 1.7881s/iter; left time: 459.5387s
-	iters: 800, epoch: 1 | loss: 0.4480564
-	speed: 1.8005s/iter; left time: 282.6858s
-	iters: 900, epoch: 1 | loss: 0.4207341
-	speed: 1.8160s/iter; left time: 103.5145s
-Epoch: 1 cost time: 1650.540910243988
+train 175051
+val 175051
+test 175051

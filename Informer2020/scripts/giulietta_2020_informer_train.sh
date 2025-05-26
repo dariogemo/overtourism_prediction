@@ -31,6 +31,8 @@ if [ -f "$data_file" ]; then
 
   python -u $PROJECT_DIR/Informer2020/main_informer.py \
     --model informer \
+    --is_training 1 \
+    --model_id "$model_id" \
     --root_path $DATA_DIR \
     --data_path $filename \
     --data custom \
