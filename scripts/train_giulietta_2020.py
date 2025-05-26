@@ -9,8 +9,8 @@ def main(script_path, model):
     )
     train_inp = timed_input(
         "Do you want to train the model or just do prediction?\n[1 - train and prediction]\n[2 - prediction]\n",
-        timeout=30,
-        default="2",
+        timeout=5,
+        default="1",
     )
 
     if train_inp == "1":
@@ -23,7 +23,7 @@ def main(script_path, model):
                     / "scripts"
                     / "EXP-LongForecasting"
                     / "DLinear"
-                    / "giulietta_dlinear.sh"
+                    / "giulietta_2020_dlinear.sh"
                 )
                 script_train = script_path.with_name(script_path.stem + "_train.sh")
                 subprocess.call(["bash", str(script_train)])
@@ -37,7 +37,7 @@ def main(script_path, model):
                     / model
                     / "scripts"
                     / "PatchTST"
-                    / "giulietta_patchtst.sh"
+                    / "giulietta_2020_patchtst.sh"
                 )
                 script_train = script_path.with_name(script_path.stem + "_train.sh")
                 subprocess.call(["bash", str(script_train)])
@@ -50,7 +50,7 @@ def main(script_path, model):
                     / "overtourism_prediction"
                     / model
                     / "scripts"
-                    / "giulietta_informer.sh"
+                    / "giulietta_2020_informer.sh"
                 )
                 script_train = script_path.with_name(script_path.stem + "_train.sh")
                 subprocess.call(["bash", str(script_train)])
@@ -74,7 +74,7 @@ def main(script_path, model):
                     / "scripts"
                     / "EXP-LongForecasting"
                     / "DLinear"
-                    / "giulietta_dlinear.sh"
+                    / "giulietta_2020_dlinear.sh"
                 )
                 script_path = str(script_path).strip(".sh") + "_test.sh"
                 subprocess.call(["bash", script_path])
@@ -86,7 +86,7 @@ def main(script_path, model):
                     / model
                     / "scripts"
                     / "PatchTST"
-                    / "giulietta_patchtst.sh"
+                    / "giulietta_2020_patchtst.sh"
                 )
                 script_path = str(script_path).strip(".sh") + "_test.sh"
                 subprocess.call(["bash", script_path])
@@ -97,7 +97,7 @@ def main(script_path, model):
                     / "overtourism_prediction"
                     / model
                     / "scripts"
-                    / "giulietta_informer.sh"
+                    / "giulietta_2020_informer.sh"
                 )
                 script_path = str(script_path).strip(".sh") + "_test.sh"
                 subprocess.call(["bash", script_path])
@@ -114,8 +114,10 @@ if __name__ == "__main__":
     main(
         get_abs_path(
             # "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear.sh"
-            "PatchTST/scripts/PatchTST/giulietta_2020_patchtst.sh"
+            # "PatchTST/scripts/PatchTST/giulietta_2020_patchtst.sh"
+            "Informer2020/scripts/giulietta_2020_informer.sh"
         ),
         # "DLinear",
-        "PatchTST",
+        # "PatchTST",
+        "Informer2020",
     )

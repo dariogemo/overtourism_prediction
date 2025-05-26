@@ -23,7 +23,10 @@ num_vali = len(df) - num_train - num_test
 df = df[int(len(df) * 0.7) :]
 mean = np.mean(df)
 std = np.std(df)
-
+"""
+mean = np.mean(df_2019)
+std = np.mean(df_2019)
+"""
 # load the predicted/true values and the dates
 true = np.load("true.npy")
 pred = np.load("pred.npy")

@@ -55,14 +55,14 @@ mae: float = mean_absolute_error(
 print("MAE for dlinear", round(mae, 2))
 
 plt.figure()
-plt.title("DLinear predictions for Giulietta first 5 days", fontsize=40)
+plt.title("PatchTST predictions for Giulietta first 5 days", fontsize=40)
 plt.plot(final_df.iloc[:500]["count"], label="True")
 plt.plot(final_df.iloc[:500]["Predicted"], label="Predicted")
 plt.legend()
 # plt.savefig("../../img/predictions/giulietta_dlinear_first500.png")
 
 plt.figure()
-plt.title("DLinear predictions for Giulietta 2019", fontsize=40)
+plt.title("PatchTST predictions for Giulietta 2019", fontsize=40)
 plt.plot(final_df["count"], label="True")
 plt.plot(final_df["Predicted"], label="Predicted")
 plt.legend()
