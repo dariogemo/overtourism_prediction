@@ -39,10 +39,10 @@ def main(script_path, model):
                     / "PatchTST"
                     / "giulietta_patchtst.sh"
                 )
-                script_path = str(script_path).strip(".sh") + "_train.sh"
-                subprocess.call(["bash", script_path])
-                script_path = str(script_path).strip("_train.sh") + "_test.sh"
-                subprocess.call(["bash", script_path])
+                script_train = script_path.with_name(script_path.stem + "_train.sh")
+                subprocess.call(["bash", str(script_train)])
+                script_test = script_path.with_name(script_path.stem + "_test.sh")
+                subprocess.call(["bash", script_test])
 
             if model == "Informer2020":
                 script_path = (
@@ -52,10 +52,10 @@ def main(script_path, model):
                     / "scripts"
                     / "giulietta_informer.sh"
                 )
-                script_path = str(script_path).strip(".sh") + "_train.sh"
-                subprocess.call(["bash", script_path])
-                script_path = str(script_path).strip("_train.sh") + "_test.sh"
-                subprocess.call(["bash", script_path])
+                script_train = script_path.with_name(script_path.stem + "_train.sh")
+                subprocess.call(["bash", str(script_train)])
+                script_test = script_path.with_name(script_path.stem + "_test.sh")
+                subprocess.call(["bash", script_test])
 
         elif kaggle != "yes":
             script_path = Path(script_path)
@@ -113,7 +113,9 @@ def main(script_path, model):
 if __name__ == "__main__":
     main(
         get_abs_path(
-            "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear.sh"
+            # "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear.sh"
+            "PatchTST/scripts/PatchTST/giulietta_2020_patchtst.sh"
         ),
-        "DLinear",
+        # "DLinear",
+        "PatchTST",
     )

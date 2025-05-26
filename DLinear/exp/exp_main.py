@@ -38,7 +38,8 @@ class Exp_Main(Exp_Basic):
     def _get_data(self, flag):
         if flag == "test" or flag == "pred":
             data_set, data_loader, dates = data_provider(
-                self.args, flag, testing=self.args.testing
+                self.args,
+                flag,
             )
             return data_set, data_loader, dates
         else:

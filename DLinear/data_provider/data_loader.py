@@ -301,14 +301,10 @@ class Dataset_Custom(Dataset):
         if self.scale and not self.testing:
             train_data = df_data[border1s[0] : border2s[0]]
             self.scaler.fit(train_data.values)
-            # print(self.scaler.mean_)
-            # exit()
             data = self.scaler.transform(df_data.values)
         elif self.scale and self.testing:
             train_data = df_data[border1:border2]
             self.scaler.fit(train_data.values)
-            # print(self.scaler.mean_)
-            # exit()
             data = self.scaler.transform(df_data.values)
         else:
             data = df_data.values

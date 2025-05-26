@@ -15,7 +15,7 @@ data_dict = {
 }
 
 
-def data_provider(args, flag, testing=False):
+def data_provider(args, flag):
     Data = data_dict[args.data]
     timeenc = 0 if args.embed != "timeF" else 1
 
@@ -46,7 +46,7 @@ def data_provider(args, flag, testing=False):
             target=args.target,
             timeenc=timeenc,
             freq=freq,
-            testing=testing,
+            testing=args.testing,
         )
     else:
         data_set = Data(
