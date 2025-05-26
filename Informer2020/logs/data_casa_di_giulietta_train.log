@@ -7,3 +7,22 @@ data_casa_di_giulietta_train.csv
 train 122478
 val 17430
 test 34953
+	iters: 100, epoch: 1 | loss: 0.7378836
+	speed: 1.1886s/iter; left time: 1018.6653s
+	iters: 200, epoch: 1 | loss: 0.5214213
+	speed: 1.8042s/iter; left time: 1365.7454s
+	iters: 300, epoch: 1 | loss: 0.6253248
+	speed: 1.7798s/iter; left time: 1169.3578s
+	iters: 400, epoch: 1 | loss: 0.5320715
+	speed: 1.7775s/iter; left time: 990.0835s
+	iters: 500, epoch: 1 | loss: 0.5324565
+	speed: 1.7863s/iter; left time: 816.3453s
+	iters: 600, epoch: 1 | loss: 0.4830895
+	speed: 1.7943s/iter; left time: 640.5697s
+	iters: 700, epoch: 1 | loss: 0.4614584
+	speed: 1.8056s/iter; left time: 464.0276s
+	iters: 800, epoch: 1 | loss: 0.4362533
+	speed: 1.8232s/iter; left time: 286.2496s
+	iters: 900, epoch: 1 | loss: 0.4452729
+	speed: 1.8306s/iter; left time: 104.3464s
+Epoch: 1 cost time: 1662.243502855301

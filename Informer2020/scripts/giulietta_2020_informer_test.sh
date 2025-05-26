@@ -30,6 +30,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename Informer2020"
 
   python -u $PROJECT_DIR/Informer2020/main_informer.py \
+    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --model informer \
     --model_id "data_casa_di_giulietta_train" \
     --root_path $DATA_DIR \
@@ -46,7 +47,7 @@ if [ -f "$data_file" ]; then
     --c_out 1 \
     --train_epochs 1 \
     --patience 3 \
-    --batch_size 128 \
+    --batch_size 64 \
     --e_layers 2 \
     --d_layers 1 \
     --attn prob \

@@ -30,6 +30,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename Informer2020"
 
   python -u $PROJECT_DIR/Informer2020/main_informer.py \
+    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --model informer \
     --is_training 1 \
     --model_id "$model_id" \
