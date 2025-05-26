@@ -273,7 +273,7 @@ if args.is_training:
 
 else:
     ii = 0
-    setting = "{}_{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
+    setting = "{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_at{}_fc{}_eb{}_dt{}_mx{}_{}_{}".format(
         args.model_id,
         args.model,
         args.data,
@@ -286,9 +286,11 @@ else:
         args.e_layers,
         args.d_layers,
         args.d_ff,
+        args.attn,
         args.factor,
         args.embed,
         args.distil,
+        args.mix,
         args.des,
         ii,
     )

@@ -169,6 +169,7 @@ class Exp_Informer(Exp_Basic):
         test_data, test_loader, dates = self._get_data(flag="test")
 
         path = os.path.join(self.args.checkpoints, setting)
+        print(path)
         if not os.path.exists(path):
             os.makedirs(path)
 
