@@ -35,7 +35,7 @@ def sample_usage():
         time.sleep(SAMPLE_INTERVAL)
 
 
-def timed_input(prompt, timeout=5, default='yes'):
+def timed_input(prompt, timeout=5, default="yes"):
     user_input = [default]
 
     def ask():
@@ -63,33 +63,52 @@ def main(script_path: str, model: str):
     sampling_thread.start()
 
     kaggle = timed_input(
-        'Are you in kaggle? Answer yes if yes', timeout=5, default='yes')
+        "Are you in kaggle? Answer yes if yes", timeout=5, default="yes"
+    )
 
-    if kaggle == 'yes':
-        if model == 'DLinear':
-            script_path = Path("/kaggle/working") / "overtourism_prediction" / \
-                model / "scripts" / "EXP-LongForecasting" / "DLinear" / "giulietta_dlinear.sh"
+    if kaggle == "yes":
+        if model == "DLinear":
+            script_path = (
+                Path("/kaggle/working")
+                / "overtourism_prediction"
+                / model
+                / "scripts"
+                / "EXP-LongForecasting"
+                / "DLinear"
+                / "giulietta_dlinear.sh"
+            )
             start_time = time.time()
-            subprocess.call(['bash', script_path])
+            subprocess.call(["bash", script_path])
             end_time = time.time()
 
-        if model == 'PatchTST':
-            script_path = Path("/kaggle/working") / "overtourism_prediction" / \
-                model / "scripts" / "PatchTST" / "giulietta_patchtst.sh"
+        if model == "PatchTST":
+            script_path = (
+                Path("/kaggle/working")
+                / "overtourism_prediction"
+                / model
+                / "scripts"
+                / "PatchTST"
+                / "giulietta_patchtst.sh"
+            )
             start_time = time.time()
-            subprocess.call(['bash', script_path])
+            subprocess.call(["bash", script_path])
             end_time = time.time()
 
-        if model == 'Informer2020':
-            script_path = Path("/kaggle/working") / "overtourism_prediction" / \
-                model / "scripts" / "giulietta_informer.sh"
+        if model == "Informer2020":
+            script_path = (
+                Path("/kaggle/working")
+                / "overtourism_prediction"
+                / model
+                / "scripts"
+                / "giulietta_informer.sh"
+            )
             start_time = time.time()
-            subprocess.call(['bash', script_path])
+            subprocess.call(["bash", script_path])
             end_time = time.time()
 
-    elif kaggle != 'yes':
+    elif kaggle != "yes":
         start_time = time.time()
-        subprocess.call(['bash', script_path])
+        subprocess.call(["bash", script_path])
         end_time = time.time()
 
     keep_sampling = False
@@ -106,34 +125,37 @@ def main(script_path: str, model: str):
     rel_timestamps = [t - timestamps[0] for t in timestamps]
 
     plt.figure(figsize=(10, 5))
-    plt.plot(rel_timestamps, cpu_samples, label='CPU Usage (%)', color='blue')
-    plt.plot(rel_timestamps, gpu_samples,
-             label='GPU Usage (%)', color='orange')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Utilization (%)')
-    plt.title(f'CPU and GPU Utilization Over Time for {model}')
+    plt.plot(rel_timestamps, cpu_samples, label="CPU Usage (%)", color="blue")
+    plt.plot(rel_timestamps, gpu_samples, label="GPU Usage (%)", color="orange")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Utilization (%)")
+    plt.title(f"CPU and GPU Utilization Over Time for {model}")
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
     # plt.show()
-    if kaggle == 'yes':
+    if kaggle == "yes":
         plt.savefig(
-            f'/kaggle/working/overtourism_prediction/scripts/img/{model}_giulietta.png')
-    if kaggle != 'yes':
-        plt.savefig(f'img/{model}_giulietta.png')
+            f"/kaggle/working/overtourism_prediction/scripts/img/{model}_giulietta.png"
+        )
+    if kaggle != "yes":
+        plt.savefig(f"img/{model}_giulietta.png")
     pynvml.nvmlShutdown()
 
 
 def get_abs_path(script_path):
-    cur_dir = os.getcwd().strip('scripts')
+    cur_dir = os.getcwd().strip("scripts")
     new_path = os.path.join(cur_dir, script_path)
     return new_path
 
 
 if __name__ == "__main__":
-    main(get_abs_path(
-        'DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_dlinear.sh'),
-        'DLinear')
+    main(
+        get_abs_path(
+            "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_dlinear.sh"
+        ),
+        "DLinear",
+    )
     # main(get_abs_path(
     #     'PatchTST/scripts/PatchTST/giulietta_patchtst.sh'),
     #     'PatchTST')
