@@ -113,11 +113,17 @@ def main(script_path, model):
 if __name__ == "__main__":
     main(
         get_abs_path(
-            # "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear.sh"
-            # "PatchTST/scripts/PatchTST/giulietta_2020_patchtst.sh"
-            "Informer2020/scripts/giulietta_2020_informer.sh"
+            "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear.sh"
         ),
-        # "DLinear",
-        # "PatchTST",
+        "DLinear",
+    )
+
+    main(
+        get_abs_path("PatchTST/scripts/PatchTST/giulietta_2020_patchtst.sh"),
+        "PatchTST",
+    )
+
+    main(
+        get_abs_path("Informer2020/scripts/giulietta_2020_informer.sh"),
         "Informer2020",
     )

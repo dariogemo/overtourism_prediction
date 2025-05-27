@@ -53,5 +53,5 @@ if [ -f "$data_file" ]; then
     --d_layers 1 \
     --attn prob \
     --des 'Exp' \
-    --itr 1 > $PROJECT_DIR/Informer2020/logs/data_casa_di_giulietta_train.log 
+    --itr 1 > $PROJECT_DIR/scripts/logs/${model_id}_PATCHTST_train.log 
 fi
