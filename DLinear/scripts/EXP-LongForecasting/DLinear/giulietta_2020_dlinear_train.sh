@@ -30,6 +30,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename DLinear"
 
   python -u $PROJECT_DIR/DLinear/run_longExp.py \
+    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --model_id "$model_id" \
     --is_training 1 \
     --model DLinear \
