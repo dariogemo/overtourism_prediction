@@ -30,6 +30,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename PatchTST"
 
   python -u $PROJECT_DIR/PatchTST/run_longExp.py \
+    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --model_id "data_casa_di_giulietta_train" \
     --model PatchTST \
     --root_path $DATA_DIR \
