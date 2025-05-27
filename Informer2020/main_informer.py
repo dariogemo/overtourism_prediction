@@ -209,7 +209,7 @@ data_parser = {
         "T": "count",
         "M": [5, 5, 5],
         "S": [1, 1, 1],
-        "MS": [6, 6, 1],
+        "MS": [5, 5, 1],
     },
 }
 if args.data in data_parser.keys():

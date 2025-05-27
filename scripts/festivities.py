@@ -114,4 +114,29 @@ fest_df: pd.DataFrame = pd.concat(
 
 fest_df.fillna(0, inplace=True)
 
+for date in [
+    datetime(2014, 12, 25),
+    datetime(2015, 12, 12),
+    datetime(2015, 12, 13),
+    datetime(2015, 12, 14),
+    datetime(2015, 12, 25),
+    datetime(2016, 12, 25),
+    datetime(2017, 4, 18),
+    datetime(2017, 10, 15),
+    datetime(2017, 10, 16),
+    datetime(2017, 12, 25),
+    datetime(2018, 1, 29),
+    datetime(2018, 2, 6),
+    datetime(2018, 2, 7),
+    datetime(2018, 10, 8),
+    datetime(2018, 11, 12),
+    datetime(2018, 11, 19),
+    datetime(2018, 12, 25),
+    datetime(2019, 5, 27),
+    datetime(2019, 12, 25),
+]:
+    fest_df.loc[date, "values"] = 2
+
+print(fest_df.value_counts())
+
 fest_df.to_csv("./../../main_dataset/context_festivities.csv")

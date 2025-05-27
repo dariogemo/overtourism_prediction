@@ -43,8 +43,8 @@ if [ -f "$data_file" ]; then
     --seq_len 96 \
     --label_len 48 \
     --pred_len 96 \
-    --enc_in 6 \
-    --dec_in 6 \
+    --enc_in 5 \
+    --dec_in 5 \
     --c_out 1 \
     --train_epochs 10 \
     --patience 3 \
@@ -53,5 +53,5 @@ if [ -f "$data_file" ]; then
     --d_layers 1 \
     --attn prob \
     --des 'Exp' \
-    --itr 1 > $PROJECT_DIR/scripts/logs/${model_id}_PATCHTST_train.log 
+    --itr 1 > $PROJECT_DIR/scripts/logs/${model_id}_INFORMER_train.log 
 fi
