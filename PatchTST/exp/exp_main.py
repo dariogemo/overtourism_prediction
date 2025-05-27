@@ -269,11 +269,13 @@ class Exp_Main(Exp_Basic):
     def test(self, setting, test=0):
         test_data, test_loader, dates = self._get_data(flag="test")
 
+        path = os.path.join(self.args.checkpoints, setting)
+        if not os.path.exists(path):
+            os.makedirs(path)
+
         if test:
             print("loading model")
-            self.model.load_state_dict(
-                torch.load(os.path.join("./checkpoints/" + setting, "checkpoint.pth"))
-            )
+            self.model.load_state_dict(torch.load(os.path.join(path, "checkpoint.pth")))
 
         preds = []
         trues = []

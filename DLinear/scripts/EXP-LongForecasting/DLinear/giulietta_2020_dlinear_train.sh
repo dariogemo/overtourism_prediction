@@ -43,8 +43,8 @@ if [ -f "$data_file" ]; then
     --seq_len 96 \
     --label_len 48 \
     --pred_len 96 \
-    --enc_in 5 \
-    --dec_in 5 \
+    --enc_in 6 \
+    --dec_in 6 \
     --c_out 1 \
     --train_epochs 10 \
     --patience 3 \

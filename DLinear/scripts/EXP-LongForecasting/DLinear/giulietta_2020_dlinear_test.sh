@@ -22,7 +22,7 @@ if [ ! -d "$DATA_DIR" ]; then
 fi
 
 data_file=$DATA_DIR/data_casa_di_giulietta_test.csv
-echo $data_file
+
 if [ -f "$data_file" ]; then
   filename=$(basename "$data_file")
   model_id="${filename%.*}"
@@ -43,8 +43,8 @@ if [ -f "$data_file" ]; then
     --seq_len 96 \
     --label_len 48 \
     --pred_len 96 \
-    --enc_in 5 \
-    --dec_in 5 \
+    --enc_in 6 \
+    --dec_in 6 \
     --c_out 1 \
     --batch_size 128 \
     --e_layers 2 \
