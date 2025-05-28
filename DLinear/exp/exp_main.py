@@ -194,7 +194,7 @@ class Exp_Main(Exp_Basic):
                             outputs = self.model(
                                 batch_x, batch_x_mark, dec_inp, batch_y_mark, batch_y
                             )
-                    # print(outputs.shape,batch_y.shape)
+                    # print(outputs.shape, batch_y.shape)
                     f_dim = -1 if self.args.features == "MS" else 0
                     outputs = outputs[:, -self.args.pred_len :, f_dim:]
                     batch_y = batch_y[:, -self.args.pred_len :, f_dim:].to(self.device)
@@ -249,7 +249,7 @@ class Exp_Main(Exp_Basic):
 
         return self.model
 
-    def test(self, setting, test=0):
+    def test(self, setting, test=True):
         test_data, test_loader, dates = self._get_data(flag="test")
 
         if test:
@@ -259,6 +259,7 @@ class Exp_Main(Exp_Basic):
                     os.path.join(self.args.checkpoints, setting, "checkpoint.pth")
                 )
             )
+        print(os.path.join(self.args.checkpoints, setting, "checkpoint.pth"))
 
         preds = []
         trues = []
@@ -315,7 +316,7 @@ class Exp_Main(Exp_Basic):
                             )
 
                 f_dim = -1 if self.args.features == "MS" else 0
-                # print(outputs.shape,batch_y.shape)
+                # print(outputs.shape, batch_y.shape)
                 outputs = outputs[:, -self.args.pred_len :, f_dim:]
                 batch_y = batch_y[:, -self.args.pred_len :, f_dim:].to(self.device)
                 outputs = outputs.detach().cpu().numpy()
@@ -354,7 +355,9 @@ class Exp_Main(Exp_Basic):
             os.makedirs(folder_path)
 
         mae, mse, rmse, mape, mspe, rse, corr = metric(preds, trues)
-        print("mse:{}, mae:{}, rse:{}, corr:{}".format(mse, mae, rse, corr))
+        # printing corr is bleah
+        print("mse:{}, mae:{}, rse:{}".format(mse, mae, rse))
+        # print("mse:{}, mae:{}, rse:{}, corr:{}".format(mse, mae, rse, corr))
         f = open("result.txt", "a")
         f.write(setting + "  \n")
         f.write("mse:{}, mae:{}, rse:{}, corr:{}".format(mse, mae, rse, corr))

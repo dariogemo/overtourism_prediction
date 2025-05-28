@@ -1,0 +1,46 @@
+Args in experiment:
+Namespace(activation='gelu', batch_size=128, c_out=1, checkpoints='/home/dario/dev/Stage/Code/scripts/checkpoints/', d_ff=2048, d_layers=1, d_model=512, data='custom', data_path='data_casa_di_giulietta_train.csv', dec_in=5, des='Exp', devices='0,1,2,3', distil=True, do_predict=False, dropout=0.05, e_layers=2, embed='timeF', embed_type=0, enc_in=5, factor=1, features='MS', freq='t', gpu=0, individual=False, is_training=1, itr=1, label_len=48, learning_rate=0.0001, loss='mse', lradj='type1', model='DLinear', model_id='data_casa_di_giulietta_train', moving_avg=25, n_heads=8, num_workers=10, output_attention=False, patience=3, pred_len=96, root_path='/home/dario/dev/Stage/Code/../main_dataset/count_data_train', seq_len=96, target='count', test_flop=False, testing=False, train_epochs=10, use_amp=False, use_gpu=True, use_multi_gpu=False)
+this is accessed
+Use GPU: cuda:0
+>>>>>>>start training : data_casa_di_giulietta_train_DLinear_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+                  date  temp  rain  ...  rolling_mean_30d  above_avg  count
+0  2014-01-01 13:30:00   5.3     0  ...               0.0          0      4
+1  2014-01-01 13:45:00   5.3     0  ...               0.0          0     10
+2  2014-01-01 14:00:00   5.3     0  ...               0.0          0     10
+3  2014-01-01 14:15:00   5.3     0  ...               0.0          0     10
+4  2014-01-01 14:30:00   5.3     0  ...               0.0          0      4
+
+[5 rows x 7 columns]
+train 122478
+                  date  temp  rain  ...  rolling_mean_30d  above_avg  count
+0  2014-01-01 13:30:00   5.3     0  ...               0.0          0      4
+1  2014-01-01 13:45:00   5.3     0  ...               0.0          0     10
+2  2014-01-01 14:00:00   5.3     0  ...               0.0          0     10
+3  2014-01-01 14:15:00   5.3     0  ...               0.0          0     10
+4  2014-01-01 14:30:00   5.3     0  ...               0.0          0      4
+
+[5 rows x 7 columns]
+val 17430
+                  date  temp  rain  ...  rolling_mean_30d  above_avg  count
+0  2014-01-01 13:30:00   5.3     0  ...               0.0          0      4
+1  2014-01-01 13:45:00   5.3     0  ...               0.0          0     10
+2  2014-01-01 14:00:00   5.3     0  ...               0.0          0     10
+3  2014-01-01 14:15:00   5.3     0  ...               0.0          0     10
+4  2014-01-01 14:30:00   5.3     0  ...               0.0          0      4
+
+[5 rows x 7 columns]
+test 34953
+	iters: 100, epoch: 1 | loss: 0.7241828
+	speed: 0.0102s/iter; left time: 96.2520s
+	iters: 200, epoch: 1 | loss: 0.5955979
+	speed: 0.0051s/iter; left time: 47.8084s
+	iters: 300, epoch: 1 | loss: 0.6515220
+	speed: 0.0051s/iter; left time: 47.6798s
+	iters: 400, epoch: 1 | loss: 0.6100429
+	speed: 0.0056s/iter; left time: 51.4461s
+	iters: 500, epoch: 1 | loss: 0.6804465
+	speed: 0.0058s/iter; left time: 52.3132s
+	iters: 600, epoch: 1 | loss: 0.5373005
+	speed: 0.0058s/iter; left time: 52.0366s
+	iters: 700, epoch: 1 | loss: 0.6128729
+	speed: 0.0055s/iter; left time: 48.5283s

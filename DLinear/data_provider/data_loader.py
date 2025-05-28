@@ -240,7 +240,7 @@ class Dataset_Custom(Dataset):
     ):
         # size [seq_len, label_len, pred_len]
         # info
-        if size == None:
+        if size is None:
             self.seq_len = 24 * 4 * 4
             self.label_len = 24 * 4
             self.pred_len = 24 * 4
@@ -266,8 +266,9 @@ class Dataset_Custom(Dataset):
 
     def __read_data__(self):
         self.scaler = StandardScaler()
-        df_raw: pd.DataFrame = pd.read_csv(os.path.join(self.root_path, self.data_path))
-
+        df_raw: pd.DataFrame = pd.read_csv(
+            os.path.join(self.root_path, self.data_path)
+        ).drop("Unnamed: 0", axis=1)
         """
         df_raw.columns: ['date', ...(other features), target feature]
         """
@@ -275,7 +276,7 @@ class Dataset_Custom(Dataset):
         cols.remove(self.target)
         cols.remove("date")
         df_raw: pd.DataFrame = df_raw[["date"] + cols + [self.target]]
-
+        print(df_raw.head())
         if self.testing:
             border1 = 0
             border2 = len(df_raw)

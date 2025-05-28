@@ -1,12 +1,12 @@
 from pathlib import Path
+import numpy as np
+import pandas as pd
 import subprocess
 from run_all_time_metric import get_abs_path, timed_input
 
 
 def main(script_path, model):
-    kaggle = timed_input(
-        "Are you in colab? Answer yes if yes", timeout=5, default="yes"
-    )
+    kaggle = timed_input("Are you in colab? Answer yes if yes", timeout=5, default="n")
     train_inp = timed_input(
         "Do you want to train the model or just do prediction?\n[1 - train and prediction]\n[2 - prediction]\n",
         timeout=5,
