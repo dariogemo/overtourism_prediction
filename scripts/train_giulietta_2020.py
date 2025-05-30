@@ -113,6 +113,14 @@ def main(script_path, model):
 if __name__ == "__main__":
     main(
         get_abs_path(
+            "TimeMixer/scripts/long_term_forecast/giulietta_2020_timemixer.sh"
+        ),
+        "TimeMixer",
+    )
+
+    """
+    main(
+        get_abs_path(
             "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear.sh"
         ),
         "DLinear",
@@ -127,3 +135,4 @@ if __name__ == "__main__":
         get_abs_path("Informer2020/scripts/giulietta_2020_informer.sh"),
         "Informer2020",
     )
+    """
