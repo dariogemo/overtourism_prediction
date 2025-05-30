@@ -33,7 +33,7 @@ if [ -f "$data_file" ]; then
     --task_name long_term_forecast \
     --model_id "data_casa_di_giulietta_train" \
     --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
-    --is_training 1 \
+    --is_training 0 \
     --model TimeMixer \
     --root_path $DATA_DIR \
     --data_path $filename \
@@ -42,7 +42,7 @@ if [ -f "$data_file" ]; then
     --target count \
     --freq t \
     --seq_len 96 \
-    --label_len 48 \
+    --label_len 0 \
     --pred_len 96 \
     --enc_in 7 \
     --dec_in 7 \
@@ -56,5 +56,7 @@ if [ -f "$data_file" ]; then
     --down_sampling_layers 3 \
     --down_sampling_method avg \
     --down_sampling_window 2 \
+    --d_model 16 \
+    --d_ff 32 \
     --itr 1 
 fi
