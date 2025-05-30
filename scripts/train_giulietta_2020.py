@@ -57,6 +57,20 @@ def main(script_path, model):
                 script_test = script_path.with_name(script_path.stem + "_test.sh")
                 subprocess.call(["bash", script_test])
 
+            if model == "TimeMixer":
+                script_path = (
+                    Path("/content")
+                    / "overtourism_prediction"
+                    / model
+                    / "scripts"
+                    / "long_term_forecast"
+                    / "giulietta_2020_timemixer.sh"
+                )
+                script_train = script_path.with_name(script_path.stem + "_train.sh")
+                subprocess.call(["bash", str(script_train)])
+                script_test = script_path.with_name(script_path.stem + "_test.sh")
+                subprocess.call(["bash", script_test])
+
         elif kaggle != "yes":
             script_path = Path(script_path)
             script_train = script_path.with_name(script_path.stem + "_train.sh")
@@ -101,6 +115,18 @@ def main(script_path, model):
                 )
                 script_path = str(script_path).strip(".sh") + "_test.sh"
                 subprocess.call(["bash", script_path])
+
+            if model == "TimeMixer":
+                script_path = (
+                    Path("/content")
+                    / "overtourism_prediction"
+                    / model
+                    / "scripts"
+                    / "long_term_forecast"
+                    / "giulietta_2020_timemixer.sh"
+                )
+                script_test = script_path.with_name(script_path.stem + "_test.sh")
+                subprocess.call(["bash", script_test])
 
         elif kaggle != "yes":
             script_path = Path(str(script_path).strip(".sh") + "_test.sh")
