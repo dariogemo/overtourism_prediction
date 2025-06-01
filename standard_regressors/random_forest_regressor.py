@@ -34,5 +34,4 @@ plt.plot(y_test, label="True")
 plt.plot(y_pred, label="Predicted")
 plt.legend()
 plt.show()
-plt.savefig("./../scripts/img/random_forest_regressor.png")
-
+# plt.savefig("./../scripts/img/random_forest_regressor.png")

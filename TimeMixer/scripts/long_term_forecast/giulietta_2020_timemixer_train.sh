@@ -49,7 +49,7 @@ if [ -f "$data_file" ]; then
     --c_out 1 \
     --train_epochs 10 \
     --patience 3 \
-    --batch_size 16 \
+    --batch_size 128 \
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \

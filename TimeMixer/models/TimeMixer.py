@@ -129,7 +129,7 @@ class PastDecomposableMixing(nn.Module):
         elif configs.decomp_method == "dft_decomp":
             self.decompsition = DFT_series_decomp(configs.top_k)
         else:
-            raise ValueError("decompsition is error")
+            raise ValueError("decomposition is error")
 
         if configs.channel_independence == 0:
             self.cross_layer = nn.Sequential(
@@ -424,7 +424,7 @@ class Model(nn.Module):
                 else:
                     dec_out = self.projection_layer(dec_out)
                 dec_out = (
-                    dec_out.reshape(B, self.configs.enc_in, self.pred_len)
+                    dec_out.reshape(B, self.configs.dec_in, self.pred_len)
                     .permute(0, 2, 1)
                     .contiguous()
                 )

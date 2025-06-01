@@ -35,6 +35,7 @@ parser.add_argument(
     default="Autoformer",
     help="model name, options: [Autoformer, Transformer, TimesNet]",
 )
+parser.add_argument("--testing", default=False, help="Testing for thesis")
 
 # data loader
 parser.add_argument(
@@ -235,8 +236,7 @@ if __name__ == "__main__":
     if args.is_training == 1:
         for ii in range(args.itr):
             # setting record of experiments
-            setting = "{}_{}_{}_{}_{}_sl{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
-                args.task_name,
+            setting = "{}_{}_{}_{}_sl{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
                 args.model_id,
                 args.comment,
                 args.model,
@@ -268,8 +268,7 @@ if __name__ == "__main__":
             torch.cuda.empty_cache()
     else:
         ii = 0
-        setting = "{}_{}_{}_{}_{}_sl{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
-            args.task_name,
+        setting = "{}_{}_{}_{}_sl{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
             args.model_id,
             args.comment,
             args.model,
@@ -290,5 +289,5 @@ if __name__ == "__main__":
 
         exp = Exp(args)  # set experiments
         print(">>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<".format(setting))
-        exp.test(setting, test=1)
+        exp.test(setting, test=1, testing=args.testing)
         torch.cuda.empty_cache()

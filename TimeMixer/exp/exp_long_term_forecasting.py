@@ -32,9 +32,15 @@ class Exp_Long_Term_Forecast(Exp_Basic):
             model = nn.DataParallel(model, device_ids=self.args.device_ids)
         return model
 
-    def _get_data(self, flag):
-        data_set, data_loader = data_provider(self.args, flag)
-        return data_set, data_loader
+    def _get_data(self, flag, testing=False):
+        if flag == "test":
+            data_set, data_loader, dates = data_provider(
+                self.args, flag, testing=testing
+            )
+            return data_set, data_loader, dates
+        if flag != "test":
+            data_set, data_loader = data_provider(self.args, flag)
+            return data_set, data_loader
 
     def _select_optimizer(self):
         model_optim = optim.Adam(self.model.parameters(), lr=self.args.learning_rate)
@@ -127,7 +133,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
     def train(self, setting):
         train_data, train_loader = self._get_data(flag="train")
         vali_data, vali_loader = self._get_data(flag="val")
-        test_data, test_loader = self._get_data(flag="test")
+        test_data, test_loader, dates = self._get_data(flag="test")
 
         path = os.path.join(self.args.checkpoints, setting)
         if not os.path.exists(path):
@@ -282,13 +288,17 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
         return self.model
 
-    def test(self, setting, test=0):
-        test_data, test_loader = self._get_data(flag="test")
-        if test:
+    def test(self, setting, test=0, testing=False):
+        if testing:
+            test_data, test_loader, dates = self._get_data(flag="test", testing=testing)
+        else:
+            test_data, test_loader, dates = self._get_data(flag="test")
+        if test == 1:
             print("loading model")
             self.model.load_state_dict(
                 torch.load(os.path.join("./checkpoints/" + setting, "checkpoint.pth"))
             )
+            print("model loaded")
 
         checkpoints_path = "./checkpoints/" + setting + "/"
         preds = []
@@ -383,4 +393,11 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
         mae, mse, rmse, mape, mspe = metric(preds, trues)
         print("mse:{}, mae:{}".format(mse, mae))
+
+        folder_path = "./results/" + setting + "/"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        np.save(folder_path + "pred.npy", preds)
+        np.save(folder_path + "true.npy", trues)
+        np.save(folder_path + "very_dates.npy", dates)
         return

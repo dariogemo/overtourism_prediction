@@ -32,6 +32,7 @@ if [ -f "$data_file" ]; then
   python -u $PROJECT_DIR/TimeMixer/run.py \
     --task_name long_term_forecast \
     --model_id "data_casa_di_giulietta_train" \
+    --testing True \
     --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --is_training 0 \
     --model TimeMixer \
