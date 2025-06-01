@@ -106,7 +106,7 @@ def main(script_path: str, model: str):
             subprocess.call(["bash", script_path])
             end_time = time.time()
 
-        if model == "Informer2020":
+        if model == "TimeMixer":
             script_path = (
                 Path("/content")
                 / "overtourism_prediction"
