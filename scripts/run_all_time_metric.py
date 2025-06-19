@@ -68,7 +68,7 @@ def main(script_path: str, model: str):
 
     if kaggle == "yes":
         if model == "DLinear":
-            script_path = (
+            script_path: Path = (
                 Path("/content")
                 / "overtourism_prediction"
                 / model
@@ -82,7 +82,7 @@ def main(script_path: str, model: str):
             end_time = time.time()
 
         if model == "PatchTST":
-            script_path = (
+            script_path: Path = (
                 Path("/content")
                 / "overtourism_prediction"
                 / model
@@ -95,7 +95,7 @@ def main(script_path: str, model: str):
             end_time = time.time()
 
         if model == "Informer2020":
-            script_path = (
+            script_path: Path = (
                 Path("/content")
                 / "overtourism_prediction"
                 / model
@@ -107,7 +107,7 @@ def main(script_path: str, model: str):
             end_time = time.time()
 
         if model == "TimeMixer":
-            script_path = (
+            script_path: Path = (
                 Path("/content")
                 / "overtourism_prediction"
                 / model
@@ -123,6 +123,10 @@ def main(script_path: str, model: str):
         start_time = time.time()
         subprocess.call(["bash", script_path])
         end_time = time.time()
+
+    else:
+        end_time = time.time()
+        raise ValueError("Invalid input")
 
     keep_sampling = False
     sampling_thread.join()

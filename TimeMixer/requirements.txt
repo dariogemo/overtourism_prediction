@@ -8,7 +8,10 @@ scikit_learn==1.2.1
 scipy==1.8.0
 #sktime==0.4.1
 sympy==1.11.1
-torch==1.7.1
+torch
 tqdm==4.64.0
+pynvml
+psutil
+IPython
 # only test latest version of sktime
 sktime==0.29.1; python_version == "3.8"
