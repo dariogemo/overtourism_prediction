@@ -34,3 +34,4 @@ memory usage: 12.0 MB
 Data has 313456 rows and 4 columns 
 --------------------------------------------
 The maximum number of tourists entering Giulietta's house was 162 on 2019-11-21 11:45:00
+2019-11-21 11:45:00

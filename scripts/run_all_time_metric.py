@@ -1,11 +1,12 @@
-from pathlib import Path
-import subprocess
-import time
-import threading
-import psutil
-import matplotlib.pyplot as plt
-import pynvml
 import os
+import subprocess
+import threading
+import time
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import psutil
+import pynvml
 
 SAMPLE_INTERVAL = 0.5
 
@@ -35,7 +36,7 @@ def sample_usage():
         time.sleep(SAMPLE_INTERVAL)
 
 
-def timed_input(prompt, timeout=5, default="yes"):
+def timed_input(prompt: str, timeout: int = 5, default: str = "yes"):
     user_input = [default]
 
     def ask():
@@ -54,7 +55,7 @@ def timed_input(prompt, timeout=5, default="yes"):
     return user_input[0]
 
 
-def main(script_path: str, model: str):
+def main(script_path_raw: str, model: str):
     global keep_sampling
 
     pynvml.nvmlInit()
@@ -65,7 +66,7 @@ def main(script_path: str, model: str):
     kaggle = timed_input(
         "Are you in kaggle? Answer yes if yes", timeout=5, default="yes"
     )
-
+    start_time = time.time()
     if kaggle == "yes":
         if model == "DLinear":
             script_path: Path = (
@@ -77,9 +78,7 @@ def main(script_path: str, model: str):
                 / "DLinear"
                 / "giulietta_2020_dlinear_train.sh"
             )
-            start_time = time.time()
             subprocess.call(["bash", script_path])
-            end_time = time.time()
 
         if model == "PatchTST":
             script_path: Path = (
@@ -90,9 +89,7 @@ def main(script_path: str, model: str):
                 / "PatchTST"
                 / "giulietta_2020_patchtst_train.sh"
             )
-            start_time = time.time()
             subprocess.call(["bash", script_path])
-            end_time = time.time()
 
         if model == "Informer2020":
             script_path: Path = (
@@ -102,9 +99,7 @@ def main(script_path: str, model: str):
                 / "scripts"
                 / "giulietta_2020_informer_train.sh"
             )
-            start_time = time.time()
             subprocess.call(["bash", script_path])
-            end_time = time.time()
 
         if model == "TimeMixer":
             script_path: Path = (
@@ -115,19 +110,15 @@ def main(script_path: str, model: str):
                 / "long_term_forecast"
                 / "giulietta_2020_timemixer_train.sh"
             )
-            start_time = time.time()
             subprocess.call(["bash", script_path])
-            end_time = time.time()
 
     elif kaggle != "yes":
-        start_time = time.time()
-        subprocess.call(["bash", script_path])
-        end_time = time.time()
+        subprocess.call(["bash", script_path_raw])
 
     else:
-        end_time = time.time()
         raise ValueError("Invalid input")
 
+    end_time = time.time()
     keep_sampling = False
     sampling_thread.join()
 
@@ -160,7 +151,7 @@ def main(script_path: str, model: str):
     pynvml.nvmlShutdown()
 
 
-def get_abs_path(script_path):
+def get_abs_path(script_path: str):
     cur_dir = os.getcwd().strip("scripts")
     new_path = os.path.join(cur_dir, script_path)
     return new_path

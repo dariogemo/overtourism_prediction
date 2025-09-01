@@ -1,0 +1,17 @@
+data_complesso_del_duomo.csv 2014-01-01 13:30:00 2022-12-14 13:45:00
+data_giardino_giusti.csv 2014-01-01 12:30:00 2022-05-20 13:15:00
+data_anfiteatro_arena.csv 2014-01-01 13:30:00 2020-11-01 17:00:00
+data_museo_degli_affreschi__g.b._cavalcaselle__e_tomba_di_giulietta.csv 2014-01-02 09:00:00 2022-12-14 14:45:00
+data_museo_archeologico_al_teatro_romano.csv 2014-01-02 10:15:00 2019-12-30 18:15:00
+data_torre_dei_lamberti.csv 2014-01-02 09:00:00 2022-12-14 13:30:00
+data_casa_di_giulietta.csv 2014-01-01 13:30:00 2022-12-10 17:15:00
+data_basilica_di_santa_anastasia.csv 2014-01-01 13:00:00 2022-12-14 13:15:00
+data_basilica_di_san_zeno.csv 2014-01-01 12:15:00 2022-12-14 14:15:00
+data_palazzo_della_ragione_o_del_comune.csv 2014-04-15 10:00:00 2020-11-01 15:15:00
+data_castelvecchio.csv 2020-01-01 13:30:00 2020-11-01 15:45:00
+data_museo_africano.csv 2014-01-03 14:30:00 2015-09-22 11:15:00
+data_museo_di_castelvecchio.csv 2000-01-01 02:30:00 2022-12-14 14:15:00
+data_teatro_romano.csv 2014-09-16 13:45:00 2022-12-14 13:45:00
+data_museo_lapidario_maffeiano.csv 2014-01-02 08:30:00 2022-12-14 13:30:00
+data_chiesa_di_san_fermo.csv 2014-01-01 13:00:00 2022-12-14 14:15:00
+data_museo_di_storia_naturale.csv 2014-01-02 09:45:00 2022-12-14 12:15:00

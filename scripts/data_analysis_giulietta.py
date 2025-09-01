@@ -7,32 +7,36 @@ import seaborn as sns
 
 print("DATA EXPLORATION FOR GIULIETTA'S HOUSE\n")
 
-run_figs = input("Do you want to display the figures? [{y}es, {n}o]\n")
+run_figs: str = str(input("Do you want to display the figures? [{y}es, {n}o]\n"))
 
-if run_figs == "y" or run_figs == "yes":
-    dpi = 0
-    while dpi > 500 or dpi < 100:
-        dpi = int(
+if run_figs in ["y", "yes"]:
+    DPI = 0
+    while DPI > 500 or DPI < 100:
+        DPI = int(
             input("DPI for saving the figures. Enter a number between 100 and 500\n")
         )
-        if dpi > 500 or dpi < 100:
-            print(f'You\'ve entered "{dpi}", please enter a value between 100 and 500')
+        if DPI > 500 or DPI < 100:
+            print(f'You\'ve entered "{DPI}", please enter a value between 100 and 500')
 else:
-    dpi = None
+    DPI = None
 
-redir_stdout = input(
-    "Save the output of the script in a txt file\n"
-    "(txt_files/data_casa_di_giulietta_output.txt)? [{y}es, {n}o]\n"
+redir_stdout: str = str(
+    input(
+        "Save the output of the script in a txt file\n"
+        "(txt_files/data_casa_di_giulietta_output.txt)? [{y}es, {n}o]\n"
+    )
 )
-if redir_stdout == "y" or redir_stdout == "yes":
+if redir_stdout in ["y", "yes"]:
     sys.stdout = open("txt_files/data_casa_di_giulietta_output.txt", "w")
-elif redir_stdout == "n" or redir_stdout == "no":
+else:
     pass
 
 df: pd.DataFrame = pd.read_csv(
-    "../data_casa_di_giulietta.csv", index_col="date", parse_dates=["date"]
+    "../../main_dataset/count_data/data_casa_di_giulietta.csv",
+    index_col="date",
+    parse_dates=["date"],
 )
-df pd.DataFrame = df.drop("Unnamed: 0", axis=1)
+df: pd.DataFrame = df.drop("Unnamed: 0", axis=1)
 
 print(
     "Data's first 5 rows\n", df.head(), "\n--------------------------------------------"
@@ -58,7 +62,7 @@ if run_figs == "y" or run_figs == "yes":
     sns.lineplot(
         y=df["popularity"], x=df.index, linewidth=0.3, color="#5cad52", ax=ax[1][1]
     )
-    plt.savefig("img/data_analysis/giulietta_timeseries.png", dpi=dpi)
+    plt.savefig("img/data_analysis/giulietta_timeseries.png", dpi=DPI)
 else:
     pass
 
@@ -86,12 +90,12 @@ if run_figs == "y" and run_figs == "yes":
         ax=ax[1][1],
     )
     ax[1][1].set_ylim(0, 19.3)
-    plt.savefig("img/data_analysis/giulietta_timeseries_oneweek.png", dpi=dpi)
+    plt.savefig("img/data_analysis/giulietta_timeseries_oneweek.png", dpi=DPI)
 else:
     pass
 
 max_count_mask = df["count"] == df["count"].max()
-max_count :pd.DataFrame = df[max_count_mask]
+max_count: pd.DataFrame = df[max_count_mask]
 print(
     "The maximum number of tourists entering Giulietta's house was",
     int(max_count.iloc[0]["count"]),
