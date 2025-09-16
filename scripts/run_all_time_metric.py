@@ -76,7 +76,7 @@ def main(script_path_raw: str, model: str):
                 / "scripts"
                 / "EXP-LongForecasting"
                 / "DLinear"
-                / "giulietta_2020_dlinear_train.sh"
+                / "arena_2020_dlinear_train.sh"
             )
             subprocess.call(["bash", script_path])
 
@@ -87,7 +87,7 @@ def main(script_path_raw: str, model: str):
                 / model
                 / "scripts"
                 / "PatchTST"
-                / "giulietta_2020_patchtst_train.sh"
+                / "arena_2020_patchtst_train.sh"
             )
             subprocess.call(["bash", script_path])
 
@@ -97,7 +97,7 @@ def main(script_path_raw: str, model: str):
                 / "overtourism_prediction"
                 / model
                 / "scripts"
-                / "giulietta_2020_informer_train.sh"
+                / "arena_2020_informer_train.sh"
             )
             subprocess.call(["bash", script_path])
 
@@ -108,7 +108,7 @@ def main(script_path_raw: str, model: str):
                 / model
                 / "scripts"
                 / "long_term_forecast"
-                / "giulietta_2020_timemixer_train.sh"
+                / "arena_2020_timemixer_train.sh"
             )
             subprocess.call(["bash", script_path])
 
@@ -143,9 +143,7 @@ def main(script_path_raw: str, model: str):
     plt.tight_layout()
     # plt.show()
     if kaggle == "yes":
-        plt.savefig(
-            f"/content/overtourism_prediction/scripts/img/{model}_giulietta.png"
-        )
+        plt.savefig(f"/content/overtourism_prediction/scripts/img/{model}_arena.png")
     if kaggle != "yes":
         plt.savefig(f"img/{model}_giulietta.png")
     pynvml.nvmlShutdown()
@@ -158,12 +156,12 @@ def get_abs_path(script_path: str):
 
 
 if __name__ == "__main__":
-    # main(
-    #     get_abs_path(
-    #         "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear_train.sh"
-    #      ),
-    #     "DLinear",
-    # )
+    main(
+        get_abs_path(
+            "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear_train.sh"
+        ),
+        "DLinear",
+    )
     # main(get_abs_path(
     #     'PatchTST/scripts/PatchTST/giulietta_patchtst.sh'),
     #     'PatchTST')
@@ -171,9 +169,9 @@ if __name__ == "__main__":
     #     'Informer2020/scripts/giulietta_informer.sh'),
     #     'Informer2020')
 
-    main(
-        get_abs_path(
-            "TimeMixer/scripts/long_term_forecast/giulietta_2020_timemixer_train.sh"
-        ),
-        "TimeMixer",
-    )
+    # main(
+    #    get_abs_path(
+    #        "TimeMixer/scripts/long_term_forecast/giulietta_2020_timemixer_train.sh"
+    #    ),
+    #    "TimeMixer",
+    # )
