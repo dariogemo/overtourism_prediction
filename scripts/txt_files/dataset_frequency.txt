@@ -14,4 +14,4 @@ data_museo_di_castelvecchio.csv 2000-01-01 02:30:00 2022-12-14 14:15:00
 data_teatro_romano.csv 2014-09-16 13:45:00 2022-12-14 13:45:00
 data_museo_lapidario_maffeiano.csv 2014-01-02 08:30:00 2022-12-14 13:30:00
 data_chiesa_di_san_fermo.csv 2014-01-01 13:00:00 2022-12-14 14:15:00
-data_museo_di_storia_naturale.csv 2014-01-02 09:45:00 2022-12-14 12:15:00
+data_museo_di_storia_natura.csv 2014-01-02 09:45:00 2022-12-14 12:15:00
