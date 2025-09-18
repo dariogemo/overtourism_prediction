@@ -114,6 +114,7 @@ def main(script_path_raw: str, model: str):
 
     elif kaggle != "yes":
         subprocess.call(["bash", script_path_raw])
+        print(script_path_raw)
 
     else:
         raise ValueError("Invalid input")
@@ -145,7 +146,7 @@ def main(script_path_raw: str, model: str):
     if kaggle == "yes":
         plt.savefig(f"/content/overtourism_prediction/scripts/img/{model}_arena.png")
     if kaggle != "yes":
-        plt.savefig(f"img/{model}_giulietta.png")
+        plt.savefig(f"img/{model}_arena.png")
     pynvml.nvmlShutdown()
 
 
@@ -158,7 +159,7 @@ def get_abs_path(script_path: str):
 if __name__ == "__main__":
     main(
         get_abs_path(
-            "DLinear/scripts/EXP-LongForecasting/DLinear/giulietta_2020_dlinear_train.sh"
+            "DLinear/scripts/EXP-LongForecasting/DLinear/arena_2020_dlinear.sh"
         ),
         "DLinear",
     )

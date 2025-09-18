@@ -21,7 +21,7 @@ if [ ! -d "$DATA_DIR" ]; then
   exit 1
 fi
 
-data_file=$DATA_DIR/data_anfiteatro_arena_train.csv
+data_file=$DATA_DIR/data_anfiteatro_arena_2020.csv
 
 if [ -f "$data_file" ]; then
   filename=$(basename "$data_file")
@@ -52,5 +52,5 @@ if [ -f "$data_file" ]; then
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \
-    --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_DLINEAR_train.log"
+    --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_DLINEAR.log"
 fi
