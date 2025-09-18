@@ -76,7 +76,7 @@ def main(script_path_raw: str, model: str):
                 / "scripts"
                 / "EXP-LongForecasting"
                 / "DLinear"
-                / "arena_2020_dlinear_train.sh"
+                / "arena_2020_dlinear.sh"
             )
             subprocess.call(["bash", script_path])
 
