@@ -87,7 +87,7 @@ def main(script_path_raw: str, model: str):
                 / model
                 / "scripts"
                 / "PatchTST"
-                / "arena_2020_patchtst_train.sh"
+                / "arena_2020_patchtst.sh"
             )
             subprocess.call(["bash", script_path])
 
@@ -144,7 +144,9 @@ def main(script_path_raw: str, model: str):
     plt.tight_layout()
     # plt.show()
     if kaggle == "yes":
-        plt.savefig(f"/content/overtourism_prediction/scripts/img/{model}_arena.png")
+        plt.savefig(
+            f"/content/overtourism_prediction/scripts/img/colab/{model}_arena.png"
+        )
     if kaggle != "yes":
         plt.savefig(f"img/{model}_arena.png")
     pynvml.nvmlShutdown()
@@ -157,15 +159,13 @@ def get_abs_path(script_path: str):
 
 
 if __name__ == "__main__":
-    main(
-        get_abs_path(
-            "DLinear/scripts/EXP-LongForecasting/DLinear/arena_2020_dlinear.sh"
-        ),
-        "DLinear",
-    )
-    # main(get_abs_path(
-    #     'PatchTST/scripts/PatchTST/giulietta_patchtst.sh'),
-    #     'PatchTST')
+    # main(
+    #    get_abs_path(
+    #        "DLinear/scripts/EXP-LongForecasting/DLinear/arena_2020_dlinear.sh"
+    #    ),
+    #    "DLinear",
+    # )
+    main(get_abs_path("PatchTST/scripts/PatchTST/arena_2020_patchtst.sh"), "PatchTST")
     # main(get_abs_path(
     #     'Informer2020/scripts/giulietta_informer.sh'),
     #     'Informer2020')
