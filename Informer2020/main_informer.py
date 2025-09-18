@@ -1,5 +1,6 @@
 import argparse
 import os
+
 import torch
 
 from exp.exp_informer import Exp_Informer
@@ -207,9 +208,9 @@ data_parser = {
     "custom": {
         "data": f"{args.data_path}",
         "T": "count",
-        "M": [5, 5, 5],
+        "M": [7, 7, 7],
         "S": [1, 1, 1],
-        "MS": [5, 5, 1],
+        "MS": [7, 7, 1],
     },
 }
 if args.data in data_parser.keys():
