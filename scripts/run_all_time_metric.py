@@ -148,7 +148,8 @@ def main(script_path_raw: str, model: str):
             f"/content/overtourism_prediction/scripts/img/colab/{model}_arena.png"
         )
     if kaggle != "yes":
-        plt.savefig(f"img/{model}_arena.png")
+        # plt.savefig(f"img/{model}_arena.png")
+        pass
     pynvml.nvmlShutdown()
 
 

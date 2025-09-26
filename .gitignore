@@ -6,3 +6,4 @@ FEDformer/
 scripts/checkpoints/
 scripts/.ipynb_checkpoints/
 scripts/test_results/
+scripts/results/

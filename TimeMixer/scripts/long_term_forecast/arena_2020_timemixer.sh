@@ -54,8 +54,8 @@ if [ -f "$data_file" ]; then
     --d_layers 1 \
     --des 'Exp' \
     --down_sampling_layers 3 \
-    --down_sampling_method avg \
-    --down_sampling_window 2 \
+    --down_sampling_method max \
+    --down_sampling_window 4 \
     --d_model 16 \
     --d_ff 32 \
     --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_TIMEMIXER_2020.log"
