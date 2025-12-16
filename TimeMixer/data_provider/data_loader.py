@@ -1,17 +1,17 @@
+import glob
 import os
+import re
+import warnings
+
 import numpy as np
 import pandas as pd
-import glob
-import re
 import torch
+from data_provider.m4 import M4Dataset, M4Meta
+from data_provider.uea import Normalizer, interpolate_missing, subsample
+from sklearn.preprocessing import StandardScaler
 from sktime.datasets import load_from_tsfile_to_dataframe
 from torch.utils.data import Dataset
-from sklearn.preprocessing import StandardScaler
 from utils.timefeatures import time_features
-from data_provider.m4 import M4Dataset, M4Meta
-from data_provider.uea import subsample, interpolate_missing, Normalizer
-from data_provider.uea import Normalizer, interpolate_missing
-import warnings
 
 warnings.filterwarnings("ignore")
 
@@ -258,8 +258,8 @@ class Dataset_Custom(Dataset):
             self.label_len = size[1]
             self.pred_len = size[2]
         # init
-        assert flag in ["train", "test", "val"]
-        type_map = {"train": 0, "val": 1, "test": 2}
+        assert flag in ["train", "test", "val", "predict"]
+        type_map = {"train": 0, "val": 1, "test": 2, "predict": 3}
         self.set_type = type_map[flag]
 
         self.features = features

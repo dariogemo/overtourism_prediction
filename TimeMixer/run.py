@@ -1,4 +1,7 @@
 import argparse
+import random
+
+import numpy as np
 import torch
 
 from exp.exp_anomaly_detection import Exp_Anomaly_Detection
@@ -6,8 +9,6 @@ from exp.exp_classification import Exp_Classification
 from exp.exp_imputation import Exp_Imputation
 from exp.exp_long_term_forecasting import Exp_Long_Term_Forecast
 from exp.exp_short_term_forecasting import Exp_Short_Term_Forecast
-import random
-import numpy as np
 
 fix_seed = 2021
 random.seed(fix_seed)
@@ -289,5 +290,6 @@ if __name__ == "__main__":
 
         exp = Exp(args)  # set experiments
         print(">>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<".format(setting))
+        # exp.predict(setting, test=1, testing=args.testing)
         exp.test(setting, test=1, testing=args.testing)
         torch.cuda.empty_cache()

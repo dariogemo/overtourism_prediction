@@ -1,22 +1,23 @@
-from torch.optim import lr_scheduler
-
-from data_provider.data_factory import data_provider
-from exp.exp_basic import Exp_Basic
-from utils.tools import (
-    EarlyStopping,
-    adjust_learning_rate,
-    visual,
-    save_to_csv,
-    visual_weights,
-)
-from utils.metrics import metric
-import torch
-import torch.nn as nn
-from torch import optim
 import os
 import time
 import warnings
+
 import numpy as np
+import torch
+import torch.nn as nn
+from data_provider.data_factory import data_provider
+from torch import optim
+from torch.optim import lr_scheduler
+from utils.metrics import metric
+from utils.tools import (
+    EarlyStopping,
+    adjust_learning_rate,
+    save_to_csv,
+    visual,
+    visual_weights,
+)
+
+from exp.exp_basic import Exp_Basic
 
 warnings.filterwarnings("ignore")
 
@@ -33,12 +34,17 @@ class Exp_Long_Term_Forecast(Exp_Basic):
         return model
 
     def _get_data(self, flag, testing=False):
-        if flag == "test":
+        if flag == "predict":
             data_set, data_loader, dates = data_provider(
                 self.args, flag, testing=testing
             )
             return data_set, data_loader, dates
-        if flag != "test":
+        elif flag == "test":
+            data_set, data_loader, dates = data_provider(
+                self.args, flag, testing=testing
+            )
+            return data_set, data_loader, dates
+        elif flag not in ["test", "predict"]:
             data_set, data_loader = data_provider(self.args, flag)
             return data_set, data_loader
 
@@ -293,6 +299,122 @@ class Exp_Long_Term_Forecast(Exp_Basic):
             test_data, test_loader, dates = self._get_data(flag="test", testing=testing)
         else:
             test_data, test_loader, dates = self._get_data(flag="test")
+        if test == 1:
+            print("loading model")
+            self.model.load_state_dict(
+                torch.load(os.path.join("./checkpoints/" + setting, "checkpoint.pth"))
+            )
+            print("model loaded")
+
+        checkpoints_path = "./checkpoints/" + setting + "/"
+        preds = []
+        trues = []
+        folder_path = "./test_results/" + setting + "/"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+
+        self.model.eval()
+        with torch.no_grad():
+            for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(
+                test_loader
+            ):
+                batch_x = batch_x.float().to(self.device)
+                batch_y = batch_y.float().to(self.device)
+
+                batch_x_mark = batch_x_mark.float().to(self.device)
+                batch_y_mark = batch_y_mark.float().to(self.device)
+
+                if "PEMS" == self.args.data or "Solar" == self.args.data:
+                    batch_x_mark = None
+                    batch_y_mark = None
+
+                if self.args.down_sampling_layers == 0:
+                    dec_inp = torch.zeros_like(
+                        batch_y[:, -self.args.pred_len :, :]
+                    ).float()
+                    dec_inp = (
+                        torch.cat(
+                            [batch_y[:, : self.args.label_len, :], dec_inp], dim=1
+                        )
+                        .float()
+                        .to(self.device)
+                    )
+                else:
+                    dec_inp = None
+
+                # encoder - decoder
+                if self.args.use_amp:
+                    with torch.cuda.amp.autocast():
+                        if self.args.output_attention:
+                            outputs = self.model(
+                                batch_x, batch_x_mark, dec_inp, batch_y_mark
+                            )[0]
+                        else:
+                            outputs = self.model(
+                                batch_x, batch_x_mark, dec_inp, batch_y_mark
+                            )
+                else:
+                    if self.args.output_attention:
+                        outputs = self.model(
+                            batch_x, batch_x_mark, dec_inp, batch_y_mark
+                        )[0]
+
+                    else:
+                        outputs = self.model(
+                            batch_x, batch_x_mark, dec_inp, batch_y_mark
+                        )
+
+                f_dim = -1 if self.args.features == "MS" else 0
+
+                outputs = outputs.detach().cpu().numpy()
+                batch_y = batch_y.detach().cpu().numpy()
+
+                pred = outputs
+                true = batch_y
+
+                preds.append(pred)
+                trues.append(true)
+                if i % 20 == 0:
+                    input = batch_x.detach().cpu().numpy()
+                    if test_data.scale and self.args.inverse:
+                        shape = input.shape
+                        input = test_data.inverse_transform(input.squeeze(0)).reshape(
+                            shape
+                        )
+                    gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
+                    pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
+                    visual(gt, pd, os.path.join(folder_path, str(i) + ".pdf"))
+
+        preds = np.concatenate(preds, axis=0)
+        trues = np.concatenate(trues, axis=0)
+        print("test shape:", preds.shape, trues.shape)
+        preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
+        trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
+        print("test shape:", preds.shape, trues.shape)
+
+        if self.args.data == "PEMS":
+            B, T, C = preds.shape
+            preds = test_data.inverse_transform(preds.reshape(-1, C)).reshape(B, T, C)
+            trues = test_data.inverse_transform(trues.reshape(-1, C)).reshape(B, T, C)
+
+        mae, mse, rmse, mape, mspe = metric(preds, trues)
+        print("mse:{}, mae:{}".format(mse, mae))
+
+        folder_path = "./results/" + setting + "/"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        np.save(folder_path + "pred.npy", preds)
+        np.save(folder_path + "true.npy", trues)
+        np.save(folder_path + "very_dates.npy", dates)
+        return
+
+    def predict(self, setting, test=0, testing=False):
+        if testing:
+            test_data, test_loader, dates = self._get_data(
+                flag="predict", testing=testing
+            )
+        else:
+            test_data, test_loader, dates = self._get_data(flag="predict")
         if test == 1:
             print("loading model")
             self.model.load_state_dict(

@@ -2,18 +2,16 @@
 
 # Get absolute path to the directory containing this script
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-
+#
 # Go one level up to reach DLinear/
-PROJECT_DIR="$( cd "$SCRIPT_DIR/../../.." && pwd )"
+PROJECT_DIR="$( cd "$SCRIPT_DIR/../../../.." && pwd )"
 
 # Set PYTHONPATH to project root
 export PYTHONPATH="$PROJECT_DIR"
 
-# Ensure log directory exists
-mkdir -p "$PROJECT_DIR/TimeMixer/logs"
-
 # Set the path to the data files
-DATA_DIR="$PROJECT_DIR/../main_dataset/count_data_2020"
+DATA_DIR="$PROJECT_DIR"
+echo $DATA_DIR
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -21,20 +19,19 @@ if [ ! -d "$DATA_DIR" ]; then
   exit 1
 fi
 
-data_file=$DATA_DIR/data_anfiteatro_arena_2020.csv
-
+data_file=$DATA_DIR/data_anfiteatro_arena_2020_prediction_val.csv
+echo $data_file
 if [ -f "$data_file" ]; then
   filename=$(basename "$data_file")
   model_id="${filename%.*}"
 
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename TimeMixer"
 
-  python -u $PROJECT_DIR/TimeMixer/run.py \
-    --task_name long_term_forecast \
+  python -u $PROJECT_DIR/DLinear/run_longExp.py \
     --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --model_id "$model_id" \
-    --is_training 1 \
-    --model TimeMixer \
+    --is_training 0 \
+    --model DLinear \
     --root_path $DATA_DIR \
     --data_path $filename \
     --data custom \
@@ -42,10 +39,10 @@ if [ -f "$data_file" ]; then
     --target count \
     --freq t \
     --seq_len 96 \
-    --label_len 0 \
+    --label_len 48 \
     --pred_len 96 \
-    --enc_in 7 \
-    --dec_in 7 \
+    --enc_in 5 \
+    --dec_in 5 \
     --c_out 1 \
     --train_epochs 10 \
     --patience 3 \
@@ -53,10 +50,5 @@ if [ -f "$data_file" ]; then
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \
-    --down_sampling_layers 1 \
-    --down_sampling_method avg \
-    --down_sampling_window 2 \
-    --d_model 16 \
-    --d_ff 32 \
-    --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_TIMEMIXER_2020.log"
+    --itr 1
 fi

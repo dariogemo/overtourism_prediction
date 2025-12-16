@@ -1,19 +1,20 @@
+from torch.utils.data import DataLoader
+
 from data_provider.data_loader import (
+    Dataset_Custom,
     Dataset_ETT_hour,
     Dataset_ETT_minute,
-    Dataset_Custom,
     Dataset_M4,
-    PSMSegLoader,
+    Dataset_PEMS,
+    Dataset_Solar,
     MSLSegLoader,
+    PSMSegLoader,
     SMAPSegLoader,
     SMDSegLoader,
     SWATSegLoader,
     UEAloader,
-    Dataset_PEMS,
-    Dataset_Solar,
 )
 from data_provider.uea import collate_fn
-from torch.utils.data import DataLoader
 
 data_dict = {
     "ETTh1": Dataset_ETT_hour,
@@ -37,7 +38,7 @@ def data_provider(args, flag, testing=False):
     Data = data_dict[args.data]
     timeenc = 0 if args.embed != "timeF" else 1
 
-    if flag == "test":
+    if flag in ["test", "predict"]:
         shuffle_flag = False
         drop_last = args.drop_last
         if args.task_name == "anomaly_detection" or args.task_name == "classification":

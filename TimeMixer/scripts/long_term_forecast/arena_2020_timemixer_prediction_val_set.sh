@@ -2,7 +2,7 @@
 
 # Get absolute path to the directory containing this script
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-
+#
 # Go one level up to reach DLinear/
 PROJECT_DIR="$( cd "$SCRIPT_DIR/../../.." && pwd )"
 
@@ -13,7 +13,8 @@ export PYTHONPATH="$PROJECT_DIR"
 mkdir -p "$PROJECT_DIR/TimeMixer/logs"
 
 # Set the path to the data files
-DATA_DIR="$PROJECT_DIR/../main_dataset/count_data_2020"
+DATA_DIR="$PROJECT_DIR"
+echo $DATA_DIR
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -21,8 +22,8 @@ if [ ! -d "$DATA_DIR" ]; then
   exit 1
 fi
 
-data_file=$DATA_DIR/data_anfiteatro_arena_2020.csv
-
+data_file=$DATA_DIR/data_anfiteatro_arena_2020_prediction_val.csv
+echo $data_file
 if [ -f "$data_file" ]; then
   filename=$(basename "$data_file")
   model_id="${filename%.*}"
@@ -33,7 +34,7 @@ if [ -f "$data_file" ]; then
     --task_name long_term_forecast \
     --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
     --model_id "$model_id" \
-    --is_training 1 \
+    --is_training 0 \
     --model TimeMixer \
     --root_path $DATA_DIR \
     --data_path $filename \
@@ -53,10 +54,12 @@ if [ -f "$data_file" ]; then
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \
-    --down_sampling_layers 1 \
+    --down_sampling_layers 3 \
     --down_sampling_method avg \
     --down_sampling_window 2 \
+    --inverse \
     --d_model 16 \
     --d_ff 32 \
-    --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_TIMEMIXER_2020.log"
+    --testing True \
+    --itr 1 
 fi
