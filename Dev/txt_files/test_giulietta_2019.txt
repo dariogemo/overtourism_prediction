@@ -1,7 +1,0 @@
-Are you in colab? Answer yes if yes
-No input received in seconds. Defaulting to 'nnn'.
-Do you want to train the model or just do prediction?
-[1 - train and prediction]
-[2 - prediction]
-
-No input received in seconds. Defaulting to '2'.

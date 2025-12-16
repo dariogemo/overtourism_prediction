@@ -13,7 +13,7 @@ export PYTHONPATH="$PROJECT_DIR"
 mkdir -p "$PROJECT_DIR/Informer2020/logs"
 
 # Set the path to the data files
-DATA_DIR="$PROJECT_DIR/../main_dataset/count_data_2020"
+DATA_DIR="$PROJECT_DIR"
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -30,7 +30,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename Informer2020"
 
   python -u $PROJECT_DIR/Informer2020/main_informer.py \
-    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
+    --checkpoints $PROJECT_DIR/Dev/checkpoints/ \
     --model informer \
     --is_training 1 \
     --model_id "$model_id" \
@@ -53,5 +53,6 @@ if [ -f "$data_file" ]; then
     --d_layers 1 \
     --attn prob \
     --des 'Exp' \
-    --itr 1 > $PROJECT_DIR/scripts/logs/${model_id}_INFORMER_2020.log 
+    --itr 1 
+  #> $PROJECT_DIR/scripts/logs/${model_id}_INFORMER_2020.log 
 fi

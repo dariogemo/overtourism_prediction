@@ -12,8 +12,9 @@ export PYTHONPATH="$PROJECT_DIR"
 # Ensure log directory exists
 mkdir -p "$PROJECT_DIR/DLinear/logs"
 
+echo $PROJECT_DIR
 # Set the path to the data files
-DATA_DIR="$PROJECT_DIR/../main_dataset/count_data_2020"
+DATA_DIR="$PROJECT_DIR"
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -30,7 +31,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename DLinear"
 
   python -u $PROJECT_DIR/DLinear/run_longExp.py \
-    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
+    --checkpoints $PROJECT_DIR/Dev/checkpoints/ \
     --model_id "$model_id" \
     --is_training 1 \
     --model DLinear \

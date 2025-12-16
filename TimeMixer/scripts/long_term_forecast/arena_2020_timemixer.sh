@@ -13,7 +13,7 @@ export PYTHONPATH="$PROJECT_DIR"
 mkdir -p "$PROJECT_DIR/TimeMixer/logs"
 
 # Set the path to the data files
-DATA_DIR="$PROJECT_DIR/../main_dataset/count_data_2020"
+DATA_DIR="$PROJECT_DIR"
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -31,7 +31,7 @@ if [ -f "$data_file" ]; then
 
   python -u $PROJECT_DIR/TimeMixer/run.py \
     --task_name long_term_forecast \
-    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
+    --checkpoints $PROJECT_DIR/Dev/checkpoints/ \
     --model_id "$model_id" \
     --is_training 1 \
     --model TimeMixer \
@@ -58,5 +58,6 @@ if [ -f "$data_file" ]; then
     --down_sampling_window 2 \
     --d_model 16 \
     --d_ff 32 \
-    --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_TIMEMIXER_2020.log"
+    --itr 1 
+  #> "$PROJECT_DIR/scripts/logs/${model_id}_TIMEMIXER_2020.log"
 fi

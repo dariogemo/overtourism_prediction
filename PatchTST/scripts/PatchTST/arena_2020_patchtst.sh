@@ -13,7 +13,7 @@ export PYTHONPATH="$PROJECT_DIR"
 mkdir -p "$PROJECT_DIR/PatchTST/logs"
 
 # Set the path to the data files
-DATA_DIR="$PROJECT_DIR/../main_dataset/count_data_2020"
+DATA_DIR="$PROJECT_DIR"
 
 # Check that it exists and has files
 if [ ! -d "$DATA_DIR" ]; then
@@ -30,7 +30,7 @@ if [ -f "$data_file" ]; then
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] Processing $filename PatchTST"
 
   python -u $PROJECT_DIR/PatchTST/run_longExp.py \
-    --checkpoints $PROJECT_DIR/scripts/checkpoints/ \
+    --checkpoints $PROJECT_DIR/Dev/checkpoints/ \
     --model_id "$model_id" \
     --is_training 1 \
     --model PatchTST \
@@ -52,5 +52,6 @@ if [ -f "$data_file" ]; then
     --e_layers 2 \
     --d_layers 1 \
     --des 'Exp' \
-    --itr 1 > "$PROJECT_DIR/scripts/logs/${model_id}_PATCHTST_2020.log"
+    --itr 1
+  #> "$PROJECT_DIR/scripts/logs/${model_id}_PATCHTST_2020.log"
 fi

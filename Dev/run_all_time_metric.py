@@ -154,22 +154,25 @@ def main(script_path_raw: str, model: str):
 
 
 def get_abs_path(script_path: str):
-    cur_dir = os.getcwd().strip("scripts")
+    cur_dir = os.getcwd().strip("Dev")
     new_path = os.path.join(cur_dir, script_path)
     return new_path
 
 
 if __name__ == "__main__":
+    """
     main(
         get_abs_path(
             "DLinear/scripts/EXP-LongForecasting/DLinear/arena_2020_dlinear.sh"
         ),
         "DLinear",
     )
+
     main(get_abs_path("PatchTST/scripts/PatchTST/arena_2020_patchtst.sh"), "PatchTST")
 
     main(get_abs_path("Informer2020/scripts/arena_2020_informer.sh"), "Informer2020")
 
+    """
     main(
         get_abs_path("TimeMixer/scripts/long_term_forecast/arena_2020_timemixer.sh"),
         "TimeMixer",
