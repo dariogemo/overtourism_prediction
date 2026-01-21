@@ -40,5 +40,5 @@ It is clear that, when it comes to accuracy, time and efficiency DLinear is the 
   Code: https://github.com/PatchTST/PatchTST
 
 - **TimeMixer** – Wang et al., *TimeMixer: Decomposable Multiscale Mixing for Time Series Forecasting*  
-  Paper: https://arxiv.org/abs/2405.14616
+  Paper: https://arxiv.org/abs/2405.14616  
   Code: https://github.com/kwuking/TimeMixer
