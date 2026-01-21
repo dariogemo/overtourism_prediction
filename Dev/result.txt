@@ -1,0 +1,3 @@
+data_anfiteatro_arena_2020_PatchTST_custom_ftMS_sl96_ll48_pl96_dm512_nh8_el2_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0  
+mse:0.5774996280670166, mae:0.37418675422668457, rse:0.7449232339859009
+
