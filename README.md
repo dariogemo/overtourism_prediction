@@ -17,3 +17,28 @@ The dataset is composed of the count of touristic entrances in the "Anfiteatro" 
 </p>
 
 ## Results
+
+The final results can be analyzed in the following table. 
+<p align="center">
+  <img src="Dev/img/final_metrics.png" width="500">
+</p>
+
+It is clear that, when it comes to accuracy, time and efficiency DLinear is the best overall model for this task.
+
+## References
+
+- **DLinear** – Zeng et al., *Are Transformers Effective for Time Series Forecasting?*  
+  Paper: https://arxiv.org/abs/2205.13504  
+  Code: https://github.com/cure-lab/LTSF-Linear
+
+- **Informer** – Zhou et al., *Informer: Beyond Efficient Transformer for Long Sequence Time-Series Forecasting*  
+  Paper: https://arxiv.org/abs/2012.07436  
+  Code: https://github.com/zhouhaoyi/Informer2020
+
+- **PatchTST** – Nie et al., *A Time Series is Worth 64 Words*  
+  Paper: https://arxiv.org/abs/2211.14730  
+  Code: https://github.com/PatchTST/PatchTST
+
+- **TimeMixer** – Wang et al., *TimeMixer: Decomposable Multiscale Mixing for Time Series Forecasting*  
+  Paper: https://arxiv.org/abs/2405.14616
+  Code: https://github.com/kwuking/TimeMixer
